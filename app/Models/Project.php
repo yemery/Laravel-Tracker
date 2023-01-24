@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Project extends Model
 {
     use HasFactory;
+        protected $fillables=['title','created_at','user_id'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -18,4 +20,5 @@ class Project extends Model
     {
         return $this->hasMany(Task::class);
     }
+
 }

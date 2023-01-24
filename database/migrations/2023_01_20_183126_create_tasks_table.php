@@ -22,7 +22,8 @@ return new class extends Migration
             $table->dateTime('deadline');
             $table->unsignedInteger('coefficient')->between(1,5);
             
-            $table->foreignId('project_id');
+            $table->foreignId('project_id')->onDelete('cascade');
+            // on cascade => delete all tasks related to that project if it has been deleted
             // $table->foreign('project_id')->references('id')->on('projects');
             
             // $table->timestamps();

@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->timestamp("created_at")->default(now())->dateFormat('Y-M-D HH');
-            $table->foreignId('user_id');
+            $table->date('created_at');
+            // $table->foreignId('user_id');
             // $table->foreign('user_id')->references('id')->on('users');
             // $table->timestamps();
         });

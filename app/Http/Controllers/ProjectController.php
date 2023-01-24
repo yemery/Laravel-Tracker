@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -16,7 +17,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects=Project::get();
-        return view();
+        return view('Project.index',['projects'=>$projects]);
     }
 
     /**
@@ -26,7 +27,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('Project.create');
     }
 
     /**
@@ -37,7 +38,14 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        // $request=$request->all();
+        Project::create([
+            'title'=>$request->title,
+            'created_at'=>Carbon::now(),
+            // 'user_id'=>$request->status,
+        ]);
+        return view('Project.index');
+
     }
 
     /**
@@ -48,7 +56,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('Project.show',['project'=>$project]);
     }
 
     /**
@@ -59,7 +67,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('Project.edit',['project'=>$project]);
     }
 
     /**
@@ -71,7 +79,8 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        Project::find($project->id)->update(['title'=>$request->title]);
+        return view('Project.index');
     }
 
     /**
@@ -82,6 +91,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return view('Project.index');
     }
 }

@@ -20,7 +20,7 @@
                 <li>{{$task->deadline}}</li>
                 <li>{{$task->created_at}}</li>
                 <li>{{$task->updated_at}}</li>
-                <li>{{$task->project_id}}</li>
+                <li>{{App\Models\Project::find($task->project_id)->title}}</li>
             </ul>
             <a href="{{route('tasks.edit',$task)}}">edit</a>
             <form action="{{route('tasks.destroy',$task)}}" method="POST">

@@ -32,7 +32,7 @@
             <td>{{$task->is_completed}}</td>
             <td>{{$task->created_at}}</td>
             <td>{{$task->deadline}}</td>
-            <td></td>
+            <td>{{App\Models\Project::find($task->project_id)->title}}</td>
             <td>{{$task->updated_at}}</td>
             
         </tr>

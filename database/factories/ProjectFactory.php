@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,9 +18,10 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'title'=>fake()->name(),
-            // 'created_at'=>fake()->dateTime(),
-            'user_id'=>random_int(1,1000),
+            'title'=>fake()->sentence(),
+            'created_at' => Carbon::now(),
+            'updated_at'=>fake()->dateTime(),
+            // 'user_id'=>random_int(1,1000),
         ];
     }
 }

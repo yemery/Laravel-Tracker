@@ -17,16 +17,18 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->enum('priority',['high','medium','low']);
-            $table->boolean('is_completed');
-            $table->timestamp("created_at")->default(now())->dateFormat('Y-M-D HH');
+            $table->enum('is_completed',['in progress','completed','not started']);
+            $table->dateTime("created_at");
             $table->dateTime('deadline');
-            $table->unsignedInteger('coefficient')->between(1,5);
+            // $table->unsignedInteger('coefficient')->between(1,5);
             
-            $table->foreignId('project_id')->onDelete('cascade');
+            // $table->foreignId('project_id')->onDelete('cascade');
             // on cascade => delete all tasks related to that project if it has been deleted
             // $table->foreign('project_id')->references('id')->on('projects');
             
             // $table->timestamps();
+            $table->dateTime('updated_at');
+            // ->nullable();
         });
     }
 

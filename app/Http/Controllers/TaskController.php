@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Task;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
@@ -15,7 +16,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        
+        return view('Task.index', [
+            'tasks' => Task::orderBy('id', 'desc')->get()
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('Task.create');
     }
 
     /**
@@ -36,7 +39,14 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        //
+        Task::create([
+            'title' => $request->title,
+            'created_at' => Carbon::now(),
+            'priority' => $request->priority,
+            'deadline' => $request->deadline
+            // 'project_id'=>$request->status,
+        ]);
+        return redirect(route('Project.index'));
     }
 
     /**
@@ -45,9 +55,11 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show($id)
     {
-        //
+        return view('Task.show', [
+            'task' => Task::findOrFail($id)
+        ]);
     }
 
     /**
@@ -56,9 +68,11 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $task)
+    public function edit($id)
     {
-        //
+        return view('Task.edit', [
+            'task' => Task::where('id', $id)
+        ]);
     }
 
     /**
@@ -70,7 +84,8 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        Task::find($task->id)->update(['title' => $request->title]);
+        return redirect(route('Task.index'));
     }
 
     /**
@@ -81,6 +96,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return redirect(route('Task.index'));
     }
 }

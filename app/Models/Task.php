@@ -8,9 +8,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Task extends Model
 {
-    use HasFactory;
-      public function project()
-    {
-        return $this->hasMany(Project::class);
-    }
+  use HasFactory;
+  protected $fillable = [
+    "title",
+    "priority",
+    "is_completed",
+    "created_at",
+    "deadline",
+    "updated_at"
+  ];
+  public function project()
+  {
+    return $this->belongsTo(Project::class);
+  }
 }

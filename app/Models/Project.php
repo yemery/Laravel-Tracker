@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Project extends Model
 {
     use HasFactory;
-        protected $fillables=['title','created_at','user_id'];
+    protected $fillable=['title','created_at','user_id'];
 
     public function user()
     {

@@ -16,8 +16,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects=Project::get();
-        return view('Project.index',['projects'=>$projects]);
+
+        return view('Project.index', [
+            'projects' => Project::orderBy('id', 'desc')->get()
+        ]);
     }
 
     /**
@@ -40,12 +42,11 @@ class ProjectController extends Controller
     {
         // $request=$request->all();
         Project::create([
-            'title'=>$request->title,
-            'created_at'=>Carbon::now(),
+            'title' => $request->title,
+            'created_at' => Carbon::now(),
             // 'user_id'=>$request->status,
         ]);
-        return view('Project.index');
-
+        return redirect(route('Project.index'));
     }
 
     /**
@@ -54,9 +55,11 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($id)
     {
-        return view('Project.show',['project'=>$project]);
+        return view('Project.show', [
+            'project' => Project::findOrFail($id)
+        ]);
     }
 
     /**
@@ -65,9 +68,11 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit($id)
     {
-        return view('Project.edit',['project'=>$project]);
+        return view('Project.edit', [
+            'project' => Project::where('id', $id)
+        ]);
     }
 
     /**
@@ -79,8 +84,8 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        Project::find($project->id)->update(['title'=>$request->title]);
-        return view('Project.index');
+        Project::find($project->id)->update(['title' => $request->title]);
+        return redirect(route('Project.index'));
     }
 
     /**
@@ -92,6 +97,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return view('Project.index');
+        return redirect(route('Project.index'));
     }
 }

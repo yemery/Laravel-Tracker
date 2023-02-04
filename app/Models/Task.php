@@ -15,7 +15,9 @@ class Task extends Model
     "is_completed",
     "created_at",
     "deadline",
-    "updated_at"
+    "updated_at",
+    "project_id"
+
   ];
   public function project()
   {

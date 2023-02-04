@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Task;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use App\Models\Project;
 
 class TaskController extends Controller
 {
@@ -16,19 +17,37 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('Task.index', [
-            'tasks' => Task::orderBy('id', 'desc')->get()
-        ]);
+        
+        // dd(gettype(Project::get(['id'])) );
+        // dd(Project::pluck('id'));
+        $tasks=Task::orderBy('id', 'desc')->get();
+        // $projectNameOfTask=Project::where();
+        // foreach ($tasks as $task) {
+            
+        //     $projectName=Project::where('id',$task->)
+        //     $tasks::where('project_id',$task->project_id)->update(['project_id']);
+            
+        // };
+       
+        
+
+        
+        
+        return view('Task.index',['tasks'=>$tasks]);
     }
+     
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+   
     public function create()
     {
-        return view('Task.create');
+        $projectNames=Project::get();
+        return view('Task.create',['pNames'=>$projectNames]);
     }
 
     /**
@@ -43,10 +62,11 @@ class TaskController extends Controller
             'title' => $request->title,
             'created_at' => Carbon::now(),
             'priority' => $request->priority,
-            'deadline' => $request->deadline
-            // 'project_id'=>$request->status,
+            'deadline' => $request->deadline,
+             "updated_at"=>Carbon::now(),
+            'project_id'=>$request->project_id,
         ]);
-        return redirect(route('Project.index'));
+        return to_route('tasks.index');
     }
 
     /**
@@ -68,11 +88,9 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Task $task)
     {
-        return view('Task.edit', [
-            'task' => Task::where('id', $id)
-        ]);
+        return view('Task.edit',['task'=>$task,'pNames'=>$projectNames=Project::get()]);
     }
 
     /**
@@ -82,10 +100,21 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTaskRequest $request, Task $task)
+    public function update(UpdateTaskRequest $request,$id)
     {
-        Task::find($task->id)->update(['title' => $request->title]);
-        return redirect(route('Task.index'));
+        // Task::find($task->id)->update(['title' => $request->title]);
+        Task::find($id)->update([
+            'title' => $request->title,
+            'priority'=> $request->priority,
+            'is_completed'=>$request->is_completed,
+            'deadline'=>$request->deadline,
+            'project_id'=>$request->project_id,
+            'updated_at'=>Carbon::now()
+        ]
+        );
+
+        return to_route('tasks.index');
+        // dd($request);
     }
 
     /**
@@ -97,6 +126,6 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect(route('Task.index'));
+        return to_route('tasks.index');
     }
 }

@@ -6,12 +6,15 @@
         }
 
         .container {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            justify-content: space-between;
+           display: flex;
+    flex-direction: column;
+    position: fixed;
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    justify-content: space-around;
+    height: 100vh;
+    background-color: white;
+    width: 327px;
         }
 
         .container>img {
@@ -36,7 +39,7 @@
             flex-direction: row;
             justify-content: flex-start;
             align-items: center;
-            width: 327px;
+            /* width: 327px; */
             height: 63px;
             padding-left: 5%;
         }

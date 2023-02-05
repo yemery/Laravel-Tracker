@@ -6,18 +6,79 @@
 }
 table {
     border-collapse: collapse;
-    width: 100%;
+    width: 93%;
+    border: 1px solid whitesmoke;
 }
 
 th,
-td {
+td,
+td a {
     text-align: left;
     padding: 8px;
+    font-size: 20px;
 }
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
+th {
+    background-color: #4a72ff;
+    color: white;
+    font-weight: bold;
+}
 /* tr:hover {
     background-color: rgb(149, 149, 211);
 } */
+body {
+    position: relative;
+}
+.content {
+    width: calc(100% - 327px);
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 30px auto;
+}
+.tasksTable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+/* .tasksTable tbody tr td:first-of-type {
+    font-weight: 600;
+    font-size: 20px;
+} */
+.btns {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 93%;
+    margin-top: 93px;
+    /* margin: 20px auto; */
+    padding: 20px auto;
+}
+.btns a {
+    font-size: 16px;
+    font-weight: bolder;
+    text-shadow: 1px 0px black;
+}
+.lastTd {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.lastTd input {
+    background-color: #f36161;
+    width: 95px;
+    height: 32px;
+    cursor: pointer;
+}
+.lastTd a input:first-of-type {
+    background-color: #4a72ff;
+}

@@ -7,8 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-      <div class="dashboardSide"></div>
     <div class="content">
+        <a href="{{ URL::previous() }}">go back</a>
         <form action="{{route('tasks.store')}}" method="POST">
             @csrf
             <label for="">Title <input type="text" name="title" id=""></label>

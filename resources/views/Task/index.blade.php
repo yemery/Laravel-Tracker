@@ -58,7 +58,7 @@
      @foreach ($tasks as $task)
         <tr>
             <td><a href="{{route('tasks.show',$task)}}">{{$task->title}}</a></td>
-                        <td><a href="{{route('projects.show',$task->id)}}"> {{App\Models\Project::find($task->project_id)->title}}</a></td>
+            <td><a href="{{route('projects.show',$task->project_id)}}"> {{App\Models\Project::find($task->project_id)->title}}</a></td>
             <td>{{$task->created_at}}</td>
             <td>{{$task->deadline}}</td>
 

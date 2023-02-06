@@ -24,6 +24,7 @@
             <img src="images/go-back-icon.svg" alt="go-back-icon">
             Go Back
         </a>
-        {{ dd($project->id) }}
+        {{-- {{ dd($project->id) }} --}}
+        <h1>{{$project->title}}</h1>
     </div>
 </body>

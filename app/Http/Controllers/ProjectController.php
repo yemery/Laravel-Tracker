@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Task;
 
 class ProjectController extends Controller
 {
@@ -20,6 +21,7 @@ class ProjectController extends Controller
         return view('Project.index', [
             'projects' => Project::orderBy('id', 'desc')->get()
         ]);
+        
     }
 
     /**
@@ -58,8 +60,9 @@ class ProjectController extends Controller
     public function show($id)
     {
         return view('Project.show', [
-            'project' => Project::findOrFail($id)
-        ]);
+            'project' => Project::findOrFail($id),
+            'tasks' => Task::where('project_id', Project::findOrFail($id)->id)->get()
+        ]);      
     }
 
     /**

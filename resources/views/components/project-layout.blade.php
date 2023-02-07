@@ -69,8 +69,7 @@
 <body>
     <div class="project-container">
         <p class="project-title">
-            {{-- {{ $project->title }} --}}
-            Project Title
+            {{ $title }}
         </p>
         <div class="project-progression">
             <div class="project-status">
@@ -81,7 +80,7 @@
                 <div class="progress"></div>
             </div>
         </div>
-        <a class="project-link" {{-- href="{{ route('Project.show', $project->id) }}" --}}>
+        <a class="project-link" href="{{ route('projects.show', $id) }}">
             View Details</a>
     </div>
 </body>

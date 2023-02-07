@@ -6,17 +6,17 @@ use Illuminate\View\Component;
 
 class ProjectLayout extends Component
 {
-    // public $project;
+    public $title;
+    public $id;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(
-        // $project
-    )
+    public function __construct($title, $id)
     {
-        // $this->project = $project;
+        $this->title = $title;
+        $this->id = $id;
     }
 
     /**

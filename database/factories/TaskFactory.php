@@ -21,7 +21,7 @@ class TaskFactory extends Factory
     {
         $projectIds=Project::pluck('id');
         return [
-            'title' => fake()->sentence(),
+            'title' => fake()->sentence(5),
             "priority" => fake()->randomElement(['high', 'medium', 'low']),
             "is_completed" => fake()->randomElement(['not started', 'in progress', 'completed']),
             "deadline" => fake()->dateTimeThisYear(),

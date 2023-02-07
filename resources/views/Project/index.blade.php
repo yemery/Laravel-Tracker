@@ -1,6 +1,8 @@
 <head>
     <style>
         .content {
+            position: absolute;
+            right: 0;
             margin-left: 348px;
             margin-top: 59px;
             display: flex;
@@ -9,7 +11,7 @@
 
         .title {
             font-family: 'Rubik One';
-            font-size: 40px;
+            font-size: 32px;
             color: #4A72FF;
             text-align: center;
             margin: auto;
@@ -47,11 +49,9 @@
             <x-button id="creation-btn">Create A New Project</x-button>
         </div>
         <div class="projects-listing">
-            {{-- @foreach ($collection as $item)
-                <x-project-layout :project="$project" />
-            @endforeach --}}
-            <x-project-layout project="$project" />
-
+            @foreach ($projects as $project)
+                <x-project-layout :title="$project->title" :id="$project->id" />
+            @endforeach
         </div>
     </div>
 </body>

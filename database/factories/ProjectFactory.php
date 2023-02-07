@@ -18,10 +18,9 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'title'=>fake()->sentence(),
+            'title'=>fake()->sentence(3),
             'created_at' => Carbon::now(),
             'updated_at'=>fake()->dateTime(),
-            // 'user_id'=>random_int(1,1000),
         ];
     }
 }

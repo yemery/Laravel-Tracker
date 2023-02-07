@@ -1,5 +1,10 @@
 <head>
     <style>
+        @import url('https://fonts.cdnfonts.com/css/rubik-one');
+        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+        
+
+        
         .content {
             position: absolute;
             right: 0;
@@ -37,6 +42,7 @@
             margin-left: 5%;
             row-gap: 25px;
         }
+        
     </style>
 </head>
 

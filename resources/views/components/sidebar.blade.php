@@ -1,20 +1,24 @@
 <head>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
         * {
             margin: 0;
             padding: 0;
         }
 
         .container {
-           display: flex;
-    flex-direction: column;
-    position: fixed;
-    /* top: 50%; */
-    /* transform: translateY(-50%); */
-    justify-content: space-around;
-    height: 100vh;
-    background-color: white;
-    width: 327px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            background: #FDFDFD;
+            box-shadow: 0px 10px 10px rgba(74, 114, 255, 0.25);
+            /* top: 50%; */
+            /* transform: translateY(-50%); */
+            justify-content: space-around;
+            height: 100vh;
+            background-color: white;
+            width: 327px;
         }
 
         .container>img {
@@ -65,7 +69,7 @@
 
         li:has(> a.active) {
             background-color: #E8EDFF;
-            border-right: 8px solid #4A72FF;
+            border-right: 4px solid #4A72FF;
         }
     </style>
 </head>

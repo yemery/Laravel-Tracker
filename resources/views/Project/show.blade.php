@@ -1,5 +1,7 @@
 <head>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
         .content {
             margin-left: 348px;
             margin-top: 59px;

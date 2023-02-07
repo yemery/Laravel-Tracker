@@ -20,7 +20,8 @@ class TaskController extends Controller
         
         // dd(gettype(Project::get(['id'])) );
         // dd(Project::pluck('id'));
-        $tasks=Task::orderBy('id', 'desc')->get();
+
+        // App\Models\Project::find($task->project_id)->title
         // $projectNameOfTask=Project::where();
         // foreach ($tasks as $task) {
             
@@ -33,7 +34,9 @@ class TaskController extends Controller
 
         
         
-        return view('Task.index',['tasks'=>$tasks]);
+        return view('Task.index',[
+            'tasks'=>Task::orderBy('id', 'desc')->get(),
+        ]);
     }
      
 

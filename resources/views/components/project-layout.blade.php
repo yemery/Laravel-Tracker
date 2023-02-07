@@ -1,5 +1,7 @@
 <head>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
         .project-container {
             background-color: white;
             border: solid 3px #4A72FF;

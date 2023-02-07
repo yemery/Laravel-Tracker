@@ -1,5 +1,6 @@
 <head>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
         button {
             color: white;
             font-family: 'Rubik';

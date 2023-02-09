@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Task;
 use App\Models\Project;
+use App\Http\Controllers\TaskController;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
-use App\Models\Task;
 
 class ProjectController extends Controller
 {
@@ -21,7 +22,6 @@ class ProjectController extends Controller
         return view('Project.index', [
             'projects' => Project::orderBy('id', 'desc')->get()
         ]);
-        
     }
 
     /**
@@ -62,7 +62,7 @@ class ProjectController extends Controller
         return view('Project.show', [
             'project' => Project::findOrFail($id),
             'tasks' => Task::where('project_id', Project::findOrFail($id)->id)->get()
-        ]);      
+        ]);
     }
 
     /**
@@ -88,7 +88,7 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         Project::find($project->id)->update(['title' => $request->title]);
-        return redirect(route('Project.index'));
+        return redirect(route('project.index'));
     }
 
     /**
@@ -99,7 +99,14 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+
+        $tasks = Task::where('project_id', $project->id)->get();
+        $tasks_controller = new TaskController;
+        foreach ($tasks as $task) {
+            $tasks_controller->destroy($task);
+        }
+
         $project->delete();
-        return redirect(route('Project.index'));
+        return redirect(route('projects.index'));
     }
 }

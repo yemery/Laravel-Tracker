@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+.content {
+    position: absolute;
+    right: 0;
+    margin-left: 348px;
+    margin-top: 59px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-family: 'Rubik';
+    font-weight: 900;
+    font-size: 32px;
+    color: #4A72FF;
+    text-align: center;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: 2% 5%;
+}
+
+.row>p {
+    font-family: 'Rubik';
+    font-weight: 900;
+    font-size: 25px;
+    font-style: normal;
+    color: #4A72FF;
+}
+
+.projects-listing {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-left: 5%;
+    row-gap: 25px;
+}

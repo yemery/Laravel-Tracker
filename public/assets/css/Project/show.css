@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+table {
+    border-collapse: collapse;
+    width: 93%;
+    text-align: center;
+}
+
+.content {
+    margin-left: 348px;
+    margin-top: 59px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.go-back {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    color: #4A72FF;
+    font-weight: 600;
+    font-size: 24px;
+    font-family: 'Rubik';
+}
+
+.go-back>img {
+    width: 8%;
+    height: auto;
+    margin-right: 1%;
+}
+
+.title {
+    font-family: 'Rubik';
+    font-weight: 900;
+    font-size: 36px;
+    text-align: center;
+    margin: 2% auto;
+    font-weight: 700;
+}
+
+.buttons-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 90px;
+    margin-bottom: 2.5%;
+}
+
+th {
+    font-family: 'Rubik';
+    font-weight: 600;
+    color: #4A72FF;
+    background-color: #E8EDFF;
+    padding: .5% 2%;
+}
+
+td {
+    font-family: 'Rubik';
+    text-align: center;
+}
+
+.lastTd {
+    /* width: 200px; */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    padding-bottom: 10%;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.lastTd input {
+    background-color: #FF0606;
+    width: 62px;
+    height: 23px;
+    cursor: pointer;
+    color: white;
+    font-family: 'Rubik';
+    border-radius: 6px;
+    border: none;
+}
+
+.lastTd a input:first-of-type {
+    background-color: #4a72ff;
+}
+
+#delete-btn {
+    color: white;
+    font-size: 20px;
+    font-family: 'Rubik';
+    border: none;
+    border-radius: 10px;
+    background-color: #FF0606;
+    width: 220px;
+    height: 35px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}

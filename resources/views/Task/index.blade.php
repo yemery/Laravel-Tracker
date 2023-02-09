@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/Task/index.css') }}">
     <title>Document</title>
     <style>
-        
+
     </style>
 </head>
 

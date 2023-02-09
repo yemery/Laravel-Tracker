@@ -1,40 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-
-        .content {
-            margin-left: 348px;
-            margin-top: 59px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .title {
-            font-family: 'Rubik One';
-            font-size: 40px;
-            font-weight: 700;
-            text-align: center;
-            margin: auto;
-        }
-
-        .content>a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Rubik';
-            font-weight: 600;
-            font-size: 20px;
-            color: #4A72FF;
-            cursor: pointer;
-        }
-
-        .content>a>img {
-            height: 20px;
-            width: auto;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/Project/create.css') }}">
 </head>
-
 <body>
     <x-sidebar />
     <div class="content">
@@ -43,8 +15,9 @@
             Go Back
         </a>
         <div class="title">Create a New Project</div>
-        <form action="{{ route('Project.store') }}" method="post">
+        <form action="{{ route('projects.store') }}" method="post">
             @csrf
         </form>
     </div>
 </body>
+</html>

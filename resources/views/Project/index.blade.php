@@ -1,49 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <style>
-        @import url('https://fonts.cdnfonts.com/css/rubik-one');
-        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-        
-
-        
-        .content {
-            position: absolute;
-            right: 0;
-            margin-left: 348px;
-            margin-top: 59px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .title {
-            font-family: 'Rubik One';
-            font-size: 32px;
-            color: #4A72FF;
-            text-align: center;
-            margin: auto;
-        }
-
-        .row {
-            display: flex;
-            justify-content: space-between;
-            margin: 2% 5%;
-        }
-
-        .row>p {
-            font-family: 'Rubik One';
-            font-size: 25px;
-            font-style: normal;
-            color: #4A72FF;
-        }
-
-        .projects-listing {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-left: 5%;
-            row-gap: 25px;
-        }
-        
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset('assets/css/Project/index.css') }}">
+    <title>Document</title>
 </head>
 
 <body>
@@ -61,3 +24,5 @@
         </div>
     </div>
 </body>
+
+</html>

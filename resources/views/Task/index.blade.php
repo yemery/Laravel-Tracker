@@ -21,7 +21,8 @@
             <h3>all your tasks</h3>
         </div>
         <div class="btns">
-            <select name="sortby" id="">
+            <form action="" method="GET">
+            {{-- <select name="sortby" id="">
                 <option value="" disabled selected>Sort by</option>
                 <optgroup label="date">
                     <option value="">date (asc)</option>
@@ -42,7 +43,17 @@
                     <option value="">in progress</option>
                 </optgroup>
 
+            </select> --}}
+            <select name="dateSort" id="">
+                  <option value="">date (asc)</option>
+                    <option value="">date (desc)</option>
             </select>
+            <select name="" id="">
+
+            </select>
+            <input type="submit" name="" id="" value="filter">
+            <input type="submit" name="" id="" value="clear">
+        </form>
             <a href="{{ route('tasks.create') }}">create new task</a>
         </div>
         <div class="tasksTable">
@@ -77,11 +88,13 @@
 
                         </tr>
                     @endforeach
+                 
 
                 </tbody>
 
             </table>
         </div>
+           {{ $tasks->links() }}
     </div>
 </body>
 

@@ -35,7 +35,7 @@ class TaskController extends Controller
         
         
         return view('Task.index',[
-            'tasks'=>Task::orderBy('id', 'desc')->get(),
+            'tasks'=>Task::orderBy('id', 'desc')->simplePaginate(7),
         ]);
     }
      

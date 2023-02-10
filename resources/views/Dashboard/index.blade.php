@@ -8,6 +8,7 @@
 </head>
 <body>
         <x-sidebar/>
+        <div class="content"></div>
 
 </body>
 </html>

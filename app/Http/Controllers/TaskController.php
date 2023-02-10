@@ -32,7 +32,7 @@ class TaskController extends Controller
        
         
 
-        
+        $daysLeft=1;
         
         return view('Task.index',[
             'tasks'=>Task::orderBy('id', 'desc')->simplePaginate(7),

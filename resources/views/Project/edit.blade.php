@@ -1,51 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-
-        .content {
-            margin-left: 348px;
-            margin-top: 59px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .title {
-            font-family: 'Rubik One';
-            font-size: 40px;
-            font-weight: 700;
-            text-align: center;
-            margin: auto;
-        }
-
-        .content>a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Rubik';
-            font-weight: 600;
-            font-size: 20px;
-            color: #4A72FF;
-            cursor: pointer;
-        }
-
-        .content>a>img {
-            height: 20px;
-            width: auto;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset('assets/css/Project/edit.css') }}">
+    <title>Document</title>
 </head>
 
 <body>
     <x-sidebar />
     <div class="content">
-        <a href="{{ URL::previous() }}">
-            <img src="/images/go-back-icon.svg" alt="arrow">
-            Go Back
-        </a>
-        <div class="title">Update The Project {{ $project->title }}</div>
-        <form action="{{ route('Project.update', $project->id) }}" method="post">
+        <div class="row">
+            <a href="{{ URL::previous() }}">
+                <img src="/images/go-back-icon.svg" alt="arrow">
+                Go Back
+            </a>
+            <div class="title">Update The Project</div>
+        </div>
+        <form action="{{ route('projects.update', $project->id) }}" method="post">
             @csrf
             @method('PATCH')
+            <div class="input-div">
+                <label>Project Title</label>
+                <input type="text" name="title" value="{{ $project->title }}">
+            </div>
+            <input type="submit" value="Update The Project">
         </form>
     </div>
 </body>
+
+</html>

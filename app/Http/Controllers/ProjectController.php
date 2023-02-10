@@ -20,7 +20,7 @@ class ProjectController extends Controller
     {
 
         return view('Project.index', [
-            'projects' => Project::orderBy('id', 'desc')->get()
+            'projects' => Project::orderBy('id', 'desc')->simplePaginate(6)
         ]);
     }
 
@@ -48,7 +48,7 @@ class ProjectController extends Controller
             'created_at' => Carbon::now(),
             // 'user_id'=>$request->status,
         ]);
-        return redirect(route('Project.index'));
+        return redirect()->route('projects.index');
     }
 
     /**
@@ -61,7 +61,7 @@ class ProjectController extends Controller
     {
         return view('Project.show', [
             'project' => Project::findOrFail($id),
-            'tasks' => Task::where('project_id', Project::findOrFail($id)->id)->get()
+            'tasks' => Task::where('project_id', Project::findOrFail($id)->id)->simplePaginate(5)
         ]);
     }
 
@@ -74,7 +74,7 @@ class ProjectController extends Controller
     public function edit($id)
     {
         return view('Project.edit', [
-            'project' => Project::where('id', $id)
+            'project' => Project::findOrFail($id)
         ]);
     }
 
@@ -88,7 +88,7 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         Project::find($project->id)->update(['title' => $request->title]);
-        return redirect(route('project.index'));
+        return redirect()->route('projects.index');
     }
 
     /**

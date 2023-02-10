@@ -7,11 +7,11 @@ table {
 }
 
 .content {
-    margin-left: 348px;
-    margin-top: 59px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: 348px;
+    padding-top: 59px;
 }
 
 .row {
@@ -62,18 +62,18 @@ th {
     padding: .5% 2%;
 }
 
-td {
+td,
+td>a {
     font-family: 'Rubik';
     text-align: center;
+    font-size: 16px;
 }
 
 .lastTd {
-    /* width: 200px; */
     display: flex;
     flex-direction: column;
     gap: 8px;
-    align-items: center;
-    padding-bottom: 10%;
+    padding: 10% 0;
 }
 
 tr:nth-child(even) {
@@ -105,7 +105,4 @@ tr:nth-child(even) {
     width: 220px;
     height: 35px;
     cursor: pointer;
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
 }

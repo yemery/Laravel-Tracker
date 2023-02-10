@@ -18,7 +18,7 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'title'=>fake()->sentence(3),
+            'title'=>fake()->sentence(2),
             'created_at' => Carbon::now(),
             'updated_at'=>fake()->dateTime(),
         ];

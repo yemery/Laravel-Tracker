@@ -35,22 +35,25 @@
             <tbody>
                 @foreach ($tasks as $task)
                     <tr>
-                        <td>{{ $task->title }}</td>
+                        <td><a href="{{ route('tasks.show', $task->id) }}">{{ $task->title }}</a></td>
                         <td>{{ $task->priority }}</td>
                         <td>{{ $task->is_completed }}</td>
                         <td>{{ $task->deadline }}</td>
                         <td class="lastTd">
-                            <a href="{{ route('tasks.edit', $task) }}"><input type="button" value="edit"></a>
+                            <a href="{{ route('tasks.edit', $task) }}"><input type="button" value="Edit"></a>
                             <form action="{{ route('tasks.destroy', $task) }}" method="POST">
                                 @csrf
                                 @method('delete')
-                                <input type="submit" name="" id="" value="delete">
+                                <input type="submit" name="" id="" value="Delete">
                             </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <div class="footer">
+            {{ $tasks->links() }}
+        </div>
         <form action="{{ route('projects.destroy', $project) }}" method="POST">
             @csrf
             @method('delete')

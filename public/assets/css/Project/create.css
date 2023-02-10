@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 .content {
-    margin-left: 348px;
-    margin-top: 59px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-left: 348px;
+    padding-top: 59px;
+    gap: 175px;
 }
 
 .title {
@@ -15,7 +17,13 @@
     margin: auto;
 }
 
-.content>a {
+.row {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.row>a {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -26,7 +34,50 @@
     cursor: pointer;
 }
 
-.content>a>img {
+.row>a>img {
     height: 20px;
     width: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Rubik';
+    gap: 56px;
+}
+
+form label {
+    font-family: 'Rubik';
+    font-size: 24px;
+    color: #4A72FF;
+}
+
+.input-div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-div>input,
+.input-div>input:focus {
+    border: solid 3px #4A72FF;
+    width: 370px;
+    height: 62px;
+    border-radius: 25px;
+    outline: none;
+    font-size: 24px;
+    padding: 0 5%;
+}
+
+input[type=submit] {
+    width: 420px;
+    height: 67px;
+    background-color: #4A72FF;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
 }

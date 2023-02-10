@@ -14,7 +14,6 @@
     <div class="content">
         <div class="title">Your Projects</div>
         <div class="row">
-            <p>Overview</p>
             <x-button id="creation-btn">Create A New Project</x-button>
         </div>
         <div class="projects-listing">
@@ -22,7 +21,11 @@
                 <x-project-layout :title="$project->title" :id="$project->id" />
             @endforeach
         </div>
+        <div class="pagination">
+            {{ $projects->links() }}
+        </div>
     </div>
+    
 </body>
 
 </html>

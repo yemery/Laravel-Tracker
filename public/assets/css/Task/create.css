@@ -1,15 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 .content a {
     color: #4a72ff;
 }
+
 * {
     text-transform: capitalize;
 }
+
 .content .formDiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 form {
     display: flex;
     flex-direction: column;
@@ -17,19 +22,23 @@ form {
     height: 600px;
     justify-content: space-evenly;
 }
+
 label {
     font-size: 15px;
     font-weight: 600;
 }
+
 input[type="submit"] {
     background-color: #4a72ff;
     height: 35px;
 }
+
 input[type="submit"]:hover {
     background-color: #e8edff;
 }
+
 .content {
-  width: calc(100% - 327px);
+    width: calc(100% - 327px);
     position: absolute;
     right: 0;
     top: 13%;
@@ -39,7 +48,8 @@ input[type="submit"]:hover {
     justify-content: space-around;
     margin: 30px auto;
 }
-.goBack{
+
+.goBack {
     position: absolute;
     left: 25%;
     top: 10%;

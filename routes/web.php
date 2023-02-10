@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -23,3 +24,4 @@ Route::get('/', function () {
 Route::resource('/projects', ProjectController::class);
 Route::resource('/tasks', TaskController::class);
 Route::resource('/dashboard', DashboardController::class);
+Route::resource('/settings', SettingsController::class);

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+body {
+    font-family: 'Rubik';
+}
+
+.title {
+    font-weight: 900;
+    font-size: 28px;
+    color: #4A72FF;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 348px;
+    padding-top: 59px;
+    gap: 50px;
+}
+
+.main {
+    display: flex;
+    gap: 100px;
+    margin-top: 5%;
+}
+
+.personal-information,
+.email-verification {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.userData {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.userData>p,
+.notifications {
+    font-size: 20px;
+}
+
+.notifications {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.modify-btn {
+    background-color: #4A72FF;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 280px;
+}
+
+.modify-btn,
+.logout {
+    padding: 1% 2%;
+    border-radius: 15px;
+    font-size: 20px;
+    color: white;
+}
+
+.logout {
+    background-color: #FF0606;
+    border: none;
+    cursor: pointer;
+}

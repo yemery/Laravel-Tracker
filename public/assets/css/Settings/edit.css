@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 348px;
+    padding-top: 59px;
+    gap: 25px;
+}
+
+.row {
+    display: flex;
+    width: 90%;
+    justify-content: flex-start;
+}
+
+.row>a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Rubik';
+    font-weight: 600;
+    font-size: 20px;
+    color: #4A72FF;
+    cursor: pointer;
+}
+
+.row>a>img {
+    height: 20px;
+    width: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Rubik';
+    gap: 45px;
+}
+
+form label {
+    font-family: 'Rubik';
+    font-size: 20px;
+    color: #4A72FF;
+}
+
+.inputs {
+    display: flex;
+    gap: 150px;
+    align-items: center;
+}
+
+.inputs>div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.input-div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-div>input,
+.input-div>input:focus {
+    border: solid 3px #4A72FF;
+    width: 370px;
+    height: 62px;
+    border-radius: 25px;
+    outline: none;
+    font-size: 24px;
+    padding: 0 5%;
+}
+
+input[type=submit] {
+    width: 320px;
+    height: 50px;
+    background-color: #4A72FF;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+}

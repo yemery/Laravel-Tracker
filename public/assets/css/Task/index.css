@@ -18,7 +18,7 @@
 
 table {
     border-collapse: collapse;
-    width: 93%;
+    width: 100%;
     border: 1px solid whitesmoke;
 }
 
@@ -66,6 +66,8 @@ body {
     align-items: center;
     justify-content: center;
     margin-top: 30px;
+        width: 93%;
+
 }
 
 /* .tasksTable tbody tr td:first-of-type {

@@ -1,0 +1,49 @@
+* {
+    text-transform: capitalize;
+}
+.content {
+    width: calc(100% - 327px);
+    position: absolute;
+    right: 0;
+    top: 10%;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around; */
+    margin: 30px auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid whitesmoke;
+}
+
+th,
+td,
+td a {
+    text-align: center;
+    font-family: 'Rubik';
+    padding: 8px;
+    font-size: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+th {
+    background-color: #4a72ff;
+    color: white;
+    font-weight: bold;
+    font-family: 'Rubik';
+    font-size: 16px;
+}
+.tasksTable, .projectsTable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+        width: 93%;
+
+}

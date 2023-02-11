@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Dashboard;
 use App\Http\Requests\StoreDashboardRequest;
 use App\Http\Requests\UpdateDashboardRequest;
+use App\Models\Project;
+use App\Models\Task;
 
 class DashboardController extends Controller
 {
@@ -15,7 +17,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        // dd(Task::orderBy('deadline', 'desc')->get());
+        dd(Task::where('is_completed','completed')->groupBy('project_id')->get());
+        // return view('Dashboard.index',['tasks'=>Task::orderBy('deadline', 'desc')->limit(5)->get()]);
+        
     }
 
     /**

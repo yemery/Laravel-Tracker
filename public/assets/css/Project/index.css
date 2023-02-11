@@ -19,8 +19,15 @@
     margin: auto;
 }
 
-.row {
-    margin-left: 8%;
+#creation-btn {
+    margin-left: 12%;
+    font-size: 20px;
+    color: white;
+    background-color: #4A72FF;
+    width: 227px;
+    padding: .5% 0;
+    text-align: center;
+    border-radius: 10px;
 }
 
 .projects-listing {

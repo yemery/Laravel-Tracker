@@ -6,15 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('assets/css/Project/edit.css') }}">
-    <title>Document</title>
+    <link rel="icon" href="/images/project-tracker-logo.svg" type="image/x-icon">
+    <title>Project Tracker</title>
 </head>
 
 <body>
     <x-sidebar />
     <div class="content">
         <div class="row">
-            <a href="{{ URL::previous() }}">
-                <img src="/images/go-back-icon.svg" alt="arrow">
+            <a class="go-back" href="{{ URL::previous() }}">
+                <img src="/images/go-back-icon.svg" alt="go-back-icon">
                 Go Back
             </a>
             <div class="title">Update The Project</div>

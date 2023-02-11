@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('assets/css/Project/show.css') }}">
-    <title>Document</title>
+    <link rel="icon" href="/images/project-tracker-logo.svg" type="image/x-icon">
+    <title>Project Tracker</title>
 </head>
 
 <body>
@@ -20,9 +21,9 @@
             <div class="title">{{ $project->title }}</div>
         </div>
         <div class="buttons-div">
-            <x-button>Filter</x-button>
-            <x-button>Add A New Task</x-button>
-            <x-button>Edit The Project</x-button>
+            <button>Filter</button>
+            <a href="{{route('tasks.create')}}">Add A New Task</a>
+            <a href="{{route('projects.edit', $project->id)}}">Edit The Project</a>
         </div>
         <table>
             <thead>

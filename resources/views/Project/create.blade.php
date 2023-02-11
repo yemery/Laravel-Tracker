@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="icon" href="/images/project-tracker-logo.svg" type="image/x-icon">
+    <title>Project Tracker</title>
     <link rel="stylesheet" href="{{ asset('assets/css/Project/create.css') }}">
 </head>
 
@@ -13,8 +14,8 @@
     <x-sidebar />
     <div class="content">
         <div class="row">
-            <a href="{{ url('projects') }}">
-                <img src="/images/go-back-icon.svg" alt="arrow">
+            <a class="go-back" href="{{ URL::previous() }}">
+                <img src="/images/go-back-icon.svg" alt="go-back-icon">
                 Go Back
             </a>
             <div class="title">Create a New Project</div>

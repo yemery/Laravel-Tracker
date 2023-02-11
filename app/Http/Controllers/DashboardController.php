@@ -18,9 +18,10 @@ class DashboardController extends Controller
     public function index()
     {
         // dd(Task::orderBy('deadline', 'desc')->get());
-        dd(Task::where('is_completed','completed')->groupBy('project_id')->get());
-        // return view('Dashboard.index',['tasks'=>Task::orderBy('deadline', 'desc')->limit(5)->get()]);
-        
+        // dd(Task::where('is_completed','completed')->groupBy('project_id')->get());
+        return view('Dashboard.index', [
+            'tasks' => Task::orderBy('deadline', 'desc')->limit(5)->get()
+        ]);
     }
 
     /**
@@ -30,7 +31,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        // Task::where('project_id', Project::find($id_project))
     }
 
     /**

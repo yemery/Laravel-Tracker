@@ -49,13 +49,12 @@
                         <th>remaining percentage</th>
                     </thead>
                     <tbody>
-                        @foreach ($pProgs as $pg)
-
-
-                        <td>{{$pg->title}}</td>
-                        <td>{{$pg->prog}}</td>
-                        <td>{{$pg->title}}</td>
-                            
+                        @foreach ($progressions as $progression)
+                            <tr>
+                                <td>{{ $progression->title }}</td>
+                                <td>{{ intval($progression->prog) === 100 ? 'Completed' : intval($progression->prog)."%" }}</td>
+                                <td>{{ $progression->title }}</td>
+                            </tr>
                         @endforeach
                     </tbody>
 

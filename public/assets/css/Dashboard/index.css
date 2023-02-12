@@ -47,3 +47,6 @@ th {
         width: 93%;
 
 }
+.progBar{
+    display: flex;
+}

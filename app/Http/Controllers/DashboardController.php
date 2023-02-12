@@ -60,7 +60,7 @@ class DashboardController extends Controller
             'progressions' => DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
                 ->join("projects", "A.project_id", "=", "projects.id")
                 ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id, projects.*")
-                ->orderBy('prog', 'desc')->limit(3)->get()
+                ->orderBy('prog', 'desc')->limit(5)->get()
         ]);
         // dd(  DB::table("tasks as A")
         // ->join("projects", "A.project_id", "=", "projects.id")

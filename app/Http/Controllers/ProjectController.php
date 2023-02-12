@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Task;
 use App\Models\Project;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\TaskController;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -108,5 +109,28 @@ class ProjectController extends Controller
 
         $project->delete();
         return redirect(route('projects.index'));
+    }
+    public function progression()
+    {
+        // $pProgs=DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
+        //     ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id")
+        //     ->orderBy('prog','desc')->get();
+
+            // cus we need also the information of the project anzidou join m3a project table 
+        $projects_with_prog=DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
+      ->join("projects", "A.project_id", "=", "projects.id")
+            ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id, projects.*")
+            ->orderBy('prog','desc')->get();
+
+        // return multiple views with same param cus ana ma7tajaha f dashborad o nta f project 
+        // $views = [
+
+        //    view('Dashboard.index',['pProgs'=>$projects_with_prog] ),
+        //     // view('users.members', compact('data')),
+          
+        // ];
+
+        return view('Dashboard.index',['pProgs'=>$projects_with_prog] );
+
     }
 }

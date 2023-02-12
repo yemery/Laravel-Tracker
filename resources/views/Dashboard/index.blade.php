@@ -48,6 +48,16 @@
                         <th>progress</th>
                         <th>remaining percentage</th>
                     </thead>
+                    <tbody>
+                        @foreach ($pProgs as $pg)
+
+
+                        <td>{{$pg->title}}</td>
+                        <td>{{$pg->prog}}</td>
+                        <td>{{$pg->title}}</td>
+                            
+                        @endforeach
+                    </tbody>
 
                 </table>
             </div>

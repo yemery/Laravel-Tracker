@@ -10,6 +10,17 @@
     <title>Project Tracker</title>
 </head>
 
+    
+
+{{-- {{ foreach ($combined as $key => $value) {
+     echo "$key is $value\n";
+}
+dd($combined)}} --}}
+
+    {{-- @foreach ($progressions as $progression)
+        {{dd($progression)}}
+    @endforeach --}}
+
 <body>
     <x-sidebar />
     <div class="content">
@@ -17,7 +28,20 @@
         <a id="creation-btn" href="{{ route('projects.create') }}">Create A New Project</a>
         <div class="projects-listing">
             @foreach ($projects as $project)
-                <x-project-layout :title="$project->title" :id="$project->id" />
+                <x-project-layout
+                :title="$project->title"
+                :id="$project->id"
+                {{-- :progress =
+                @foreach ($progressions as $progression)
+                
+                    @if ($progression->project_id == $project->id)
+                        {{$progression->prog}}
+                    @endif
+                    {{-- @if (!in_array($progression, array_values($project)))
+                        {{ 0 }}
+                    @endif
+                    @endforeach --}}
+            />
             @endforeach
         </div>
         <div class="pagination">

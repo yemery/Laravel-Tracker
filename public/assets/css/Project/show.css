@@ -54,6 +54,14 @@ table {
     margin-bottom: 2.5%;
 }
 
+.buttons-div>a {
+    background-color: #4A72FF;
+    padding: .5% 1%;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+}
+
 th {
     font-family: 'Rubik';
     font-weight: 600;

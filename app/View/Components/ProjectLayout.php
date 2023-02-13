@@ -8,15 +8,17 @@ class ProjectLayout extends Component
 {
     public $title;
     public $id;
+    public $progress;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $id)
+    public function __construct($title, $id, $progress)
     {
         $this->title = $title;
         $this->id = $id;
+        $this->progress = $progress;
     }
 
     /**

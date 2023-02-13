@@ -75,8 +75,8 @@
         </p>
         <div class="project-progression">
             <div class="project-status">
-                <p class="message">In Progress</p>
-                <p class="percentage">-%</p>
+                <p class="message">Progress</p>
+                <p class="percentage">{{ $progress . ' %' }}</p>
             </div>
             <div class="progress-bar">
                 <div class="progress"></div>

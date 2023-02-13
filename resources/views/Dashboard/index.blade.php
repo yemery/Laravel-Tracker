@@ -53,7 +53,14 @@
                             <tr>
                                 <td>{{ $progression->title }}</td>
                                 {{-- <td>{{ intval($progression->prog) === 100 ? 'Completed' : "intval($progression->prog)."%"" }}</td> --}}
-                                <td class="progBar"><div  style="width:{{ round($progression->prog)}}% ; background-color:#4a72ff ; height: 20px; " ></div><div style="width:{{ round(100 - $progression->prog)}}% ; background-color:#ddd ; height: 20px; "></div> {{round($progression->prog)}}%</td>
+                                <td class="progBar">
+                                    <div
+                                        style="width:{{ round($progression->prog) }}% ; background-color:#4a72ff ; height: 20px; ">
+                                    </div>
+                                    <div
+                                        style="width:{{ round(100 - $progression->prog) }}% ; background-color:#ddd ; height: 20px; ">
+                                    </div> {{ round($progression->prog) }}%
+                                </td>
                                 {{-- <td ><div  style="width:{{ round($progression->prog)}}% ; background-color:#4a72ff ; height: 20px; " ></div></td> --}}
                             </tr>
                         @endforeach

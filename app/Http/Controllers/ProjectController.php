@@ -10,6 +10,8 @@ use App\Http\Controllers\TaskController;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 
+use function GuzzleHttp\Promise\task;
+
 class ProjectController extends Controller
 {
     /**
@@ -19,7 +21,6 @@ class ProjectController extends Controller
      */
     public function index()
     {
-
         return view('Project.index', [
             'projects' => Project::orderBy('id', 'desc')->simplePaginate(6),
             'progressions' => $this->progression()
@@ -120,10 +121,10 @@ class ProjectController extends Controller
         //     ->orderBy('prog','desc')->get();
 
         // cus we need also the information of the project anzidou join m3a project table 
-        $progressionPerProject = DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
-            ->join("projects", "A.project_id", "=", "projects.id")
-            ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id, projects.*")
-            ->orderBy('id')->get();
+        // $progressionPerProject = DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
+        //     ->join("projects", "A.project_id", "=", "projects.id")
+        //     ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id, projects.*")
+        //     ->orderBy('id')->get();
 
         // return multiple views with same param cus ana ma7tajaha f dashborad o nta f project 
         // $views = [
@@ -132,7 +133,35 @@ class ProjectController extends Controller
         //     // view('users.members', compact('data')),
 
         // ];
+        // return $progressionPerProject;
 
-        return $progressionPerProject;
+        $project_ids = [];
+        $idsQuery = DB::table('projects')->select('id')->get();
+
+        foreach ($idsQuery as $value) {
+            array_push($project_ids, $value->id);
+        }
+
+        $results = [];
+
+        $tasks = null;
+        $progression = null;
+        $completed = null;
+
+        foreach ($project_ids as $id) {
+            $tasks = Task::where('project_id', $id)
+                ->count();
+            if ($tasks == 0) {
+                $progression = 0;
+            } else {
+                $completed = Task::where('project_id', $id)
+                    ->where('is_completed', 'completed')
+                    ->count();
+                $progression = intval($completed * 100 / $tasks);
+            }
+            $results[$id] = $progression;
+        }
+
+        return  $results;
     }
 }

@@ -1,71 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-
-        .project-container {
-            background-color: white;
-            border: solid 3px #4A72FF;
-            border-radius: 15px;
-            width: 345px;
-            height: 197px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-        }
-
-        .project-title {
-            font-family: 'Rubik';
-            font-weight: 700;
-            font-size: 32px;
-            text-align: center;
-        }
-
-        .project-link {
-            color: #4A72FF;
-            text-decoration-line: underline;
-            font-size: 20px;
-            font-family: 'Rubik';
-            align-self: flex-end;
-            margin-right: 5%;
-            cursor: pointer;
-        }
-
-
-        .progress-bar {
-            height: 15px;
-            background-color: #D9D9D9;
-        }
-
-        .progress {
-            height: 100%;
-            width: 50%;
-            background-color: #4A72FF;
-        }
-
-        .project-progression {
-            display: flex;
-            flex-direction: column;
-            width: 90%;
-            height: 52px;
-            justify-content: space-between;
-        }
-
-        .project-status {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .message {
-            font-family: 'Rubik';
-            font-size: 24px;
-        }
-
-        .percentage {
-            font-family: 'Rubik';
-            font-size: 20px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset('assets/css/Project/project-layout.css') }}">
 </head>
 
 <body>
@@ -86,3 +26,5 @@
             View Details</a>
     </div>
 </body>
+
+</html>

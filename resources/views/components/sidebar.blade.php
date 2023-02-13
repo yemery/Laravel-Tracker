@@ -1,77 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            position: fixed;
-            background: #FDFDFD;
-            box-shadow: 0px 10px 10px rgba(74, 114, 255, 0.25);
-            /* top: 50%; */
-            /* transform: translateY(-50%); */
-            justify-content: space-around;
-            height: 100vh;
-            background-color: white;
-            width: 327px;
-        }
-
-        .container>img {
-            margin-left: 5%;
-            width: 227px;
-            height: 79px;
-            left: 50px;
-            top: 44px;
-        }
-
-        ul {
-            list-style-type: none;
-            width: 327px;
-            height: 426px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-        }
-
-        li {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: center;
-            /* width: 327px; */
-            height: 63px;
-            padding-left: 5%;
-        }
-
-        li a:hover {
-            color: #4A72FF
-        }
-
-        li img {
-            margin-right: 5%;
-        }
-
-        a {
-            text-decoration: none;
-            font-size: 28px;
-            color: black;
-            font-family: 'Rubik';
-        }
-
-        .active {
-            color: #4A72FF;
-        }
-
-        li:has(> a.active) {
-            background-color: #E8EDFF;
-            border-right: 4px solid #4A72FF;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset('assets/css/sidebar.css') }}">
 </head>
 
 <body>
@@ -101,3 +35,5 @@
         </ul>
     </div>
 </body>
+
+</html>

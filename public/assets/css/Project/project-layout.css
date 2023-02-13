@@ -63,3 +63,6 @@
     font-family: 'Rubik';
     font-size: 20px;
 }
+.progBar{
+    display: flex;
+}

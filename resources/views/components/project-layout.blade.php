@@ -19,7 +19,14 @@
                 <p class="percentage">{{ $progress . ' %' }}</p>
             </div>
             <div class="progress-bar">
-                <div class="progress"></div>
+                <div class="progBar">
+                     <div
+                                        style="width:{{ round($progress) }}% ; background-color:#4a72ff ; height: 20px; ">
+                                    </div>
+                                    <div
+                                        style="width:{{ round(100 - $progress) }}% ; background-color:#ddd ; height: 20px; ">
+                                    </div>
+                </div>
             </div>
         </div>
         <a class="project-link" href="{{ route('projects.show', $id) }}">

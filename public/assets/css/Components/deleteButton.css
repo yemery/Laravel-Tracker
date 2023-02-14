@@ -1,0 +1,11 @@
+input[value='delete']{
+
+    background-color: #FF0606;
+    width: 62px;
+    height: 23px;
+    cursor: pointer;
+    color: white;
+    font-family: 'Rubik';
+    border-radius: 6px;
+    border: none;
+}

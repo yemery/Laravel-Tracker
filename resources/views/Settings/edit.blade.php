@@ -14,10 +14,8 @@
     <x-sidebar />
     <div class="content">
         <div class="row">
-            <a href="{{ URL::previous() }}">
-                <img src="/images/go-back-icon.svg" alt="arrow">
-                Go Back
-            </a>
+                         <x-go-back/>
+
         </div>
         <form action="
         {{-- {{ route('settings.update', $user->id) }} --}}

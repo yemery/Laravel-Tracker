@@ -12,9 +12,8 @@
 
 <body>
     <x-sidebar />
-    <a href="{{ URL::previous() }}" class="goBack"><object data={{ asset('images/goBack.svg') }} width="10"
-            height="10"> </object>
-        go back</a>
+              <x-go-back/>
+
 
     <div class="content">
         <div class="formDiv">

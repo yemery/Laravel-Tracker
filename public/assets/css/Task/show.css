@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+
+
 .content {
     width: calc(100% - 327px);
     position: absolute;
@@ -19,6 +23,7 @@ table {
 } */
 * {
     text-transform: capitalize;
+    font-family: 'Rubik';
 }
 
 .divs {

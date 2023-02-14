@@ -9,28 +9,18 @@
     <link rel="icon" href="/images/project-tracker-logo.svg" type="image/x-icon">
     <title>Project Tracker</title>
 </head>
-
-{{-- {{dd($progressions)}} --}}
-
-{{-- @foreach ($projects as $project)
-    @foreach ($progressions as $id => $progression)
-        @if ($id == $project->id)
-            {{ dd($progression) }}
-        @endif
-    @endforeach
-@endforeach --}}
-
 <body>
     <x-sidebar />
     <div class="content">
         <div class="title">Your Projects</div>
-        <a id="creation-btn" href="{{ route('projects.create') }}">Create A New Project</a>
+                    <x-button href='projects.create'>Create A New Project</x-button>
+
+        {{-- <a id="creation-btn" href="{{ route('projects.create') }}">Create A New Project</a> --}}
         <div class="projects-listing">
             @foreach ($projects as $project)
             {{$prog = null}}
                 @foreach ($progressions as $id => $progression)
                     @if ($id == $project->id)
-                        {{-- {{ $prog = $progression }} --}}
                         <x-project-layout :title="$project->title" :id="$project->id" :progress="$progression" />
                     @endif
                 @endforeach

@@ -27,8 +27,8 @@
                     <tbody>
                         @foreach ($tasks as $task)
                             <tr>
-                                <td>{{ $task->title }}</td>
-                                <td>{{ $task->deadline }}</td>
+                                <td><x-button href='tasks.show' :object='$task'>{{ $task->title }}</x-button></td>
+                                <td><x-button href='projects.show' :object='$task->project_id'> {{ App\Models\Project::find($task->project_id)->title }}</x-button></td>
                                 <td>{{ \Carbon\Carbon::parse($task->deadline)->diffInDays(\Carbon\Carbon::parse($task->created_at)) }}
                                     days</td>
                             </tr>
@@ -46,22 +46,15 @@
                     <thead>
                         <th>project title</th>
                         <th>progress</th>
-                        {{-- <th>remaining percentage</th> --}}
                     </thead>
                     <tbody>
                         @foreach ($progressions as $progression)
                             <tr>
-                                <td>{{ $progression->title }}</td>
-                                {{-- <td>{{ intval($progression->prog) === 100 ? 'Completed' : "intval($progression->prog)."%"" }}</td> --}}
-                                <td class="progBar">
-                                    <div
-                                        style="width:{{ round($progression->prog) }}% ; background-color:#4a72ff ; height: 20px; ">
-                                    </div>
-                                    <div
-                                        style="width:{{ round(100 - $progression->prog) }}% ; background-color:#ddd ; height: 20px; ">
-                                    </div> {{ round($progression->prog) }}%
+                                <td> <x-button href='projects.show' :object='$progression->id'> {{ $progression->title }}</x-button></td>
+                                <td>
+                                    <x-progress-bar :prog='$progression->prog'/>
+                                    {{intval($progression->prog)}}%
                                 </td>
-                                {{-- <td ><div  style="width:{{ round($progression->prog)}}% ; background-color:#4a72ff ; height: 20px; " ></div></td> --}}
                             </tr>
                         @endforeach
                     </tbody>

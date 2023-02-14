@@ -1,0 +1,7 @@
+.goBack {
+    position: absolute;
+    left: 25%;
+    top: 10%;
+    font-size: 16px;
+    text-transform: capitalize;
+}

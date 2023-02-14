@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-    </style>
     <link rel="stylesheet" href="{{ asset('assets/css/Task/show.css') }}">
     <link rel="icon" href="/images/project-tracker-logo.svg" type="image/x-icon">
     <title>Project Tracker</title>
@@ -15,30 +12,14 @@
 
 <body>
     <x-sidebar />
-    <a href="{{ URL::previous() }}" class="goBack"><object data={{ asset('images/goBack.svg') }} width="10"
-            height="10"> </object>
-        go back</a>
+               <x-go-back/>
+
 
     <div class="content">
 
-        {{-- <h3>{{$task->title}}</h3> --}}
         <h3>Details</h3>
 
-        {{-- <ul>
-                <li>{{$task->title}}</li>
-                <li>{{$task->priority}}</li>
-                <li>{{$task->is_completed}}</li>
-                <li>{{$task->deadline}}</li>
-                <li>{{$task->created_at}}</li>
-                <li>{{$task->updated_at}}</li>
-                <li>{{App\Models\Project::find($task->project_id)->title}}</li>
-            </ul>
-            <a href="{{route('tasks.edit',$task)}}">edit</a>
-            <form action="{{route('tasks.desdivoy',$task)}}" method="POST">
-                @csrf
-                @method('delete')
-                <input type="submit" name="" id="" value="delete">
-            </form> --}}
+      
         <div class="divs">
             <div>
                 <span>Title</span>
@@ -77,14 +58,11 @@
 
         </div>
         <div class="lastTd">
+ <x-button href='tasks.edit' :object='$task'>edit</x-button>
 
-            <a href="{{ route('tasks.edit', $task) }}">
-                <input type="button" value="edit"></a>
-            <form action="{{ route('tasks.destroy', $task) }}" method="POST">
-                @csrf
-                @method('delete')
-                <input type="submit" name="" id="" value="delete">
-            </form>
+                         
+                                <x-delete-button route="tasks.destroy" :object='$task' />
+         
         </div>
     </div>
 </body>

@@ -14,16 +14,18 @@
     <x-sidebar />
     <div class="content">
         <div class="row">
-            <a class="go-back" href="{{ URL::previous() }}">
-                <img src="/images/go-back-icon.svg" alt="go-back-icon">
-                Go Back
-            </a>
+                      <x-go-back/>
+
             <div class="title">{{ $project->title }}</div>
         </div>
         <div class="buttons-div">
             <button>Filter</button>
-            <a href="{{route('tasks.create')}}">Add A New Task</a>
-            <a href="{{route('projects.edit', $project->id)}}">Edit The Project</a>
+                        <x-button href='tasks.create'>Add A New Task</x-button>
+
+            {{-- <a href="{{route('tasks.create')}}">Add A New Task</a> --}}
+                                                        <x-button href='projects.edit' :object='$project->id'>Edit The Project</x-button>
+
+            {{-- <a href="{{route('projects.edit', $project->id)}}">Edit The Project</a> --}}
         </div>
         <table>
             <thead>
@@ -36,30 +38,40 @@
             <tbody>
                 @foreach ($tasks as $task)
                     <tr>
-                        <td><a href="{{ route('tasks.show', $task->id) }}">{{ $task->title }}</a></td>
+                        <td>
+                                                        <x-button href='tasks.show' :object='$task->id'>{{ $task->title }}</x-button>
+
+                            {{-- <a href="{{ route('tasks.show', $task->id) }}">{{ $task->title }}</a></td> --}}
                         <td>{{ $task->priority }}</td>
                         <td>{{ $task->is_completed }}</td>
                         <td>{{ $task->deadline }}</td>
                         <td class="lastTd">
-                            <a href="{{ route('tasks.edit', $task) }}"><input type="button" value="Edit"></a>
-                            <form action="{{ route('tasks.destroy', $task) }}" method="POST">
+                            <x-button href='tasks.edit' :object='$task'>edit</x-button>
+
+                         
+                                <x-delete-button route="tasks.destroy" :object='$task' />
+                            {{-- <a href="{{ route('tasks.edit', $task) }}"><input type="button" value="Edit"></a> --}}
+                            {{-- <form action="{{ route('tasks.destroy', $task) }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <input type="submit" name="" id="" value="Delete">
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+                                        <x-delete-button route="projects.destroy" :object='$project' />
+
         <div class="footer">
             {{ $tasks->links() }}
         </div>
-        <form action="{{ route('projects.destroy', $project) }}" method="POST">
+        
+        {{-- <form action="{{ route('projects.destroy', $project) }}" method="POST">
             @csrf
             @method('delete')
             <input type="submit" name="" id="delete-btn" value="Delete The Project">
-        </form>
+        </form> --}}
     </div>
 </body>
 

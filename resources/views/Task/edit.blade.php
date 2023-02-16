@@ -33,7 +33,7 @@
 
                 </select>
 
-                <label for=""> deadline</label> <input type="datetime-local" name="deadline" id=""
+                <label for=""> deadline</label> <input type="date" name="deadline" id=""
                     value="{{ $task->deadline }}">
                 <label for="">Project title </label>
                 <select name="project_id" id="">

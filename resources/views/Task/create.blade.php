@@ -31,7 +31,7 @@
                     <option value="low">low</option>
                 </select>
                 <label for=""> deadline </label>
-                <input type="datetime-local" name="deadline" id="">
+                <input type="date" name="deadline" id="">
                 <label for="">Project title
 
                 </label>

@@ -17,7 +17,10 @@
         <i>welcome back !</i>
         <div class="deadlines">
             <h4>upcoming deadlines</h4>
-            <div class="tasksTable">
+            @if (count($tasks) == 0)
+                <h3>all your tasks are completed</h3>
+            @else
+                  <div class="tasksTable">
                 <table>
                     <thead>
                         <th>task title</th>
@@ -38,6 +41,8 @@
 
 
             </div>
+            @endif
+          
         </div>
         <div class="completedProject">
             <h4>Almost Completed Projects</h4>

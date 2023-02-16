@@ -19,21 +19,7 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         
-        // dd(gettype(Project::get(['id'])) );
-        // dd(Project::pluck('id'));
-
-        // App\Models\Project::find($task->project_id)->title
-        // $projectNameOfTask=Project::where();
-        // foreach ($tasks as $task) {
-            
-        //     $projectName=Project::where('id',$task->)
-        //     $tasks::where('project_id',$task->project_id)->update(['project_id']);
-            
-        // };
        
-        
-
-        // dd(request('date'));
      
         return view('Task.index',[
             'tasks'=>Task::when(request('date') == 'asc',function ($q) use ($request){

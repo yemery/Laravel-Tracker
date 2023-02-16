@@ -15,7 +15,8 @@
     <div class="content">
         <h3>Hello , User Name</h3>
         <i>welcome back !</i>
-        <div class="deadlines">
+        <div class="tables">
+                    <div class="deadlines">
             <h4>upcoming deadlines</h4>
             @if (count($tasks) == 0)
                 <h3>all your tasks are completed</h3>
@@ -32,7 +33,7 @@
                             <tr>
                                 <td>{{ $task->title }}</td>
                                 <td>{{ $task->deadline }}</td>
-                                <td>{{ \Carbon\Carbon::parse($task->deadline)->diffInDays(\Carbon\Carbon::parse($task->created_at)) }}
+                                <td>{{ $task->daysLeft }}
                                     days</td>
                             </tr>
                         @endforeach
@@ -66,7 +67,32 @@
 
                 </table>
             </div>
+             </div>
+              <div class="lateTasks">
+            <h4>undone tasks </h4>
+            <div class="projectsTable">
+                <table>
+                    <thead>
+                        <th>task title</th>
+                        <th>deadline</th>
+                        <th>late by</th>
+                    </thead>
+                    <tbody>
+                        @foreach ($undoneTasks as $task)
+                            <tr>
+                                <td>{{ $task->title }}</td>
+                             
+                                <td>{{$task->deadline}}</td>
+                                <td>{{$task->lateBy}} days</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+
+                </table>
+            </div>
+             </div>
         </div>
+       
     </div>
 
 

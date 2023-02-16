@@ -24,7 +24,7 @@
             </div>
             <div>
                 <span>assigned to</span>
-                <span>{{ App\Models\Project::find($task->project_id)->title }}</span>
+                <span>{{$task->project_title}}</span>
             </div>
             <div>
                 <span>Priority</span>
@@ -43,9 +43,16 @@
                 <span>{{ $task->deadline }}</span>
             </div>
             <div>
-                <span>days left</span>
+                @if ($task->days_left >0)
+                    <span>days left</span>
+                
+                @else
+                <span>late by</span>
+                
+                    
+                @endif
                 <span
-                    style="color: rgb(248, 31, 31)">{{ \Carbon\Carbon::parse($task->deadline)->diffInDays(\Carbon\Carbon::parse($task->created_at)) }}
+                    style="color: rgb(248, 31, 31)">{{$task->days_left}}
                     days</span>
             </div>
             <div>

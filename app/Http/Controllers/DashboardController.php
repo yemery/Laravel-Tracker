@@ -20,17 +20,17 @@ class DashboardController extends Controller
     public function index()
     {
         $today=Carbon::today()->format('Y-m-d');
-       
+    
         return view('Dashboard.index', [
-            'tasks' => Task::where('deadline','>=',$today)->where('is_completed','!=','completed')->orderBy('deadline', 'desc')->limit(5)->get(),
+            'tasks' => Task::select('title', 'deadline', DB::raw('DATEDIFF(deadline,created_at) as daysLeft'))->where('deadline','>=',$today)->where('is_completed','!=','completed')->orderBy('deadline', 'desc')->limit(5)->get(),
             'progressions' => DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
                 ->join("projects", "A.project_id", "=", "projects.id")
                 ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id, projects.*")
-                ->orderBy('prog', 'desc')->limit(5)->get()
+                ->orderBy('prog', 'desc')->limit(5)->get(),
+            'undoneTasks'=>Task::select('title', 'deadline', DB::raw('DATEDIFF(deadline, NOW()) as lateBy'))->whereIn('is_completed', ['in progress','not started'])->where('deadline','<=',$today)->orderBy('deadline', 'desc')->limit(5)->get()
         ]);
      
-
-
+;
 
     }
 

@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Task;
-use App\Http\Requests\StoreTaskRequest;
-use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
 
 class TaskController extends Controller
 {
@@ -21,15 +22,24 @@ class TaskController extends Controller
         
        
      
-        return view('Task.index',[
-            'tasks'=>Task::when(request('date') == 'asc',function ($q) use ($request){
-                    return $q->orderBy('deadline','asc');
-            } )->when(request('date') == 'desc',function ($q) use ($request){
-                    return $q->orderBy('deadline','desc');
-            } )
-            ->latest('id')
+        // return view('Task.index',[
+        //     'tasks'=>Task::when(request('date') == 'asc',function ($q) use ($request){
+        //             return $q->orderBy('deadline','asc');
+        //     } )->when(request('date') == 'desc',function ($q) use ($request){
+        //             return $q->orderBy('deadline','desc');
+        //     } )
+        //     ->latest('id')
+        //     ->simplePaginate(7),
+        // ]);
+          return view('Task.index',[
+            'tasks'=>Task::
+            join('projects', 'tasks.project_id', '=', 'projects.id')
+            ->select('tasks.*', 'projects.title as project_title')
+            ->orderBy('deadline','desc')
             ->simplePaginate(7),
         ]);
+   
+  
      } 
      
 
@@ -73,9 +83,25 @@ class TaskController extends Controller
      */
     public function show($id)
     {
+        // dd(Task::
+        //     // find($id)
+        //     join('projects', 'tasks.project_id', '=', 'projects.id')
+        //     ->select('tasks.*', 'projects.title as project_title',DB::raw('DATEDIFF(tasks.deadline,tasks.created_at) as days_left'))
+        //     ->where('tasks.id','=',$id)
+        //     ->get());
+        // return a collection dunno whyyyyyyy , that's why i put first instead of get
+        // find method didn't work ...
         return view('Task.show', [
-            'task' => Task::findOrFail($id)
+            'task' => Task::
+            // find($id)
+            join('projects', 'tasks.project_id', '=', 'projects.id')
+            ->select('tasks.*', 'projects.title as project_title',DB::raw('DATEDIFF(tasks.deadline,tasks.created_at) as days_left'))
+            ->where('tasks.id','=',$id)
+
+            // ->get()
+            ->first()
         ]);
+       
     }
 
     /**

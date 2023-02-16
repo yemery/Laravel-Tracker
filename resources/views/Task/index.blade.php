@@ -20,18 +20,21 @@
             <h3>all your tasks</h3>
         </div>
         <div class="btns">
-            <form  method="GET">
+          <div class="forms" style="display: flex;">
+              <form  method="GET">
                 {{-- @csrf --}}
                 <select name="date" id="">
-                    <option value="asc">date (asc)</option>
-                    <option value="desc">date (desc)</option>
+                    <option value="asc" @selected(old('date', 'asc') == 'asc')>date (asc)</option>
+                    <option value="desc" @selected(old('date', 'desc') == 'desc')>date (desc)</option>
                 </select>
                 <select name="" id="">
 
                 </select>
                 <input type="submit" name="" id="" value="filter">
-                {{-- <input type="submit" name="" id="" value="clear"> --}}
+                
             </form>
+        
+          </div>
             <x-create-button href="tasks.create">create a new task</x-create-button>
         </div>
         <div class="tasksTable">
@@ -47,9 +50,9 @@
                 <tbody>
                     @foreach ($tasks as $task)
                         <tr>
-                            <td><a href="{{ route('tasks.show', $task) }}">{{ $task->title }}</a></td>
+                            <td><a href="{{ route('tasks.show',$task->id) }}">{{ $task->title }}</a></td>
                             <td><a href="{{ route('projects.show', $task->project_id) }}">
-                                    {{ App\Models\Project::find($task->project_id)->title }}</a></td>
+                                    {{$task->project_title}}</a></td>
                             <td>{{ $task->deadline }}</td>
                             <td>{{ $task->priority }}</td>
                             <td>{{ $task->is_completed }}</td>

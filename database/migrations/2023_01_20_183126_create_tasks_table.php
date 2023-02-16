@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('title');
             $table->enum('priority',['high','medium','low']);
             $table->enum('is_completed',['in progress','completed','not started'])->default('not started');
-            $table->dateTime("created_at");
-            $table->dateTime('deadline');
+            $table->date("created_at");
+            $table->date('deadline');
             // $table->unsignedInteger('coefficient')->between(1,5);
             
             $table->foreignId('project_id')->onDelete('cascade');

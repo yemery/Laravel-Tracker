@@ -20,16 +20,17 @@
             <h3>all your tasks</h3>
         </div>
         <div class="btns">
-            <form action="" method="GET">
+            <form action="/tasks" method="POST">
+                @csrf
                 <select name="dateSort" id="">
-                    <option value="">date (asc)</option>
-                    <option value="">date (desc)</option>
+                    <option value="asc">date (asc)</option>
+                    <option value="desc">date (desc)</option>
                 </select>
                 <select name="" id="">
 
                 </select>
                 <input type="submit" name="" id="" value="filter">
-                <input type="submit" name="" id="" value="clear">
+                {{-- <input type="submit" name="" id="" value="clear"> --}}
             </form>
             <x-create-button href="tasks.create">create a new task</x-create-button>
         </div>

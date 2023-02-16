@@ -133,8 +133,7 @@ tr:nth-child(even) {
 }
 
 .lastTd {
-    width: 150px;
-    display: flex;
+   display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
 }

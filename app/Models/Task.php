@@ -23,4 +23,9 @@ class Task extends Model
   {
     return $this->belongsTo(Project::class);
   }
+  public function filters($query,array $filters)
+  {
+    // return $this->belongsTo(Project::class);
+    dd($filters['date']);
+  }
 }

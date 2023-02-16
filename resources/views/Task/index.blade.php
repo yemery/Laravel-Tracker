@@ -20,9 +20,9 @@
             <h3>all your tasks</h3>
         </div>
         <div class="btns">
-            <form action="/tasks" method="POST">
-                @csrf
-                <select name="dateSort" id="">
+            <form  method="GET">
+                {{-- @csrf --}}
+                <select name="date" id="">
                     <option value="asc">date (asc)</option>
                     <option value="desc">date (desc)</option>
                 </select>

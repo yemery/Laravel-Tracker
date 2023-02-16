@@ -7,6 +7,7 @@ use App\Models\Task;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Project;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -15,7 +16,7 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         
         // dd(gettype(Project::get(['id'])) );
@@ -32,11 +33,18 @@ class TaskController extends Controller
        
         
 
-        
+        // dd(request('date'));
+     
         return view('Task.index',[
-            'tasks'=>Task::orderBy('id', 'desc')->simplePaginate(7),
+            'tasks'=>Task::when(request('date') == 'asc',function ($q) use ($request){
+                    return $q->orderBy('deadline','asc');
+            } )->when(request('date') == 'desc',function ($q) use ($request){
+                    return $q->orderBy('deadline','desc');
+            } )
+            ->latest('id')
+            ->simplePaginate(7),
         ]);
-    }
+     } 
      
 
 

@@ -14,7 +14,7 @@
     <x-sidebar />
     <div class="content">
         <div class="row">
-           <x-go-back/>
+            <x-go-back />
             <div class="title">Create a New Project</div>
         </div>
         <form action="{{ route('projects.store') }}" method="post">

@@ -17,6 +17,10 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('Dashboard.index');
+// });
+
 Route::resource('/projects', ProjectController::class);
 Route::resource('/tasks', TaskController::class);
 Route::resource('/', DashboardController::class);

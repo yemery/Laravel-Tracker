@@ -18,7 +18,21 @@ class TaskController extends Controller
     public function index()
     {
         
- 
+        // dd(gettype(Project::get(['id'])) );
+        // dd(Project::pluck('id'));
+
+        // App\Models\Project::find($task->project_id)->title
+        // $projectNameOfTask=Project::where();
+        // foreach ($tasks as $task) {
+            
+        //     $projectName=Project::where('id',$task->)
+        //     $tasks::where('project_id',$task->project_id)->update(['project_id']);
+            
+        // };
+       
+        
+
+        
         return view('Task.index',[
             'tasks'=>Task::orderBy('id', 'desc')->simplePaginate(7),
         ]);
@@ -90,6 +104,7 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request,$id)
     {
+        // Task::find($task->id)->update(['title' => $request->title]);
         Task::find($id)->update([
             'title' => $request->title,
             'priority'=> $request->priority,
@@ -101,6 +116,7 @@ class TaskController extends Controller
         );
 
         return to_route('tasks.index');
+        // dd($request);
     }
 
     /**

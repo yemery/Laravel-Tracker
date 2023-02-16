@@ -43,9 +43,6 @@ th {
     font-size: 16px;
 }
 
-/* tr:hover {
-    background-color: rgb(149, 149, 211);
-} */
 body {
     position: relative;
 }
@@ -66,49 +63,94 @@ body {
     align-items: center;
     justify-content: center;
     margin-top: 30px;
-        width: 93%;
+    width: 93%;
 
 }
 
-/* .tasksTable tbody tr td:first-of-type {
-    font-weight: 600;
-    font-size: 20px;
-} */
 .btns {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     width: 93%;
     margin-top: 93px;
-    /* margin: 20px auto; */
     padding: 20px auto;
 }
 
-.btns a {
-    font-size: 16px;
-    font-weight: bolder;
-    text-shadow: 1px 0px black;
-}
-
 .lastTd {
-    width: 200px;
+    width: 150px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+    margin-top: 5%;
 }
 
-/* .lastTd input {
-    background-color: #f36161;
-    width: 95px;
-    height: 32px;
-    cursor: pointer;
-} */
-
-.lastTd a input:first-of-type {
-    background-color: #4a72ff;
+.lastTd>#editBtn {
+    width: 62px;
+    height: 23px;
+    padding: 0;
+    font-size: 13px;
+    border-radius: 6px;
 }
 
+.checkbox-dropdown {
+    width: 200px;
+    border: 1px solid #aaa;
+    padding: 10px;
+    position: relative;
+    margin: 0 auto;
 
+    user-select: none;
+}
 
+.checkbox-dropdown:after {
+    content: '';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 6px solid transparent;
+    border-top-color: #000;
+    top: 50%;
+    right: 10px;
+    margin-top: -3px;
+}
 
+.checkbox-dropdown.is-active:after {
+    border-bottom-color: #000;
+    border-top-color: #fff;
+    margin-top: -9px;
+}
 
+.checkbox-dropdown-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    border: inherit;
+    border-top: none;
+    left: -1px;
+    right: -1px;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    height: 100px;
+    overflow: scroll;
+    overflow-x: hidden;
+    pointer-events: none;
+}
+
+.is-active .checkbox-dropdown-list {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.checkbox-dropdown-list li label {
+    display: block;
+    border-bottom: 1px solid silver;
+    padding: 10px;
+
+    transition: all 0.2s ease-out;
+}
+
+.checkbox-dropdown-list li label:hover {
+    background-color: #555;
+    color: white;
+}

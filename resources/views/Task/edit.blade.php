@@ -12,8 +12,7 @@
 
 <body>
     <x-sidebar />
-              <x-go-back/>
-
+    <x-go-back />
 
     <div class="content">
         <div class="formDiv">

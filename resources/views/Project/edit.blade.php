@@ -14,8 +14,7 @@
     <x-sidebar />
     <div class="content">
         <div class="row">
-                      <x-go-back/>
-
+            <x-go-back />
             <div class="title">Update The Project</div>
         </div>
         <form action="{{ route('projects.update', $project->id) }}" method="post">

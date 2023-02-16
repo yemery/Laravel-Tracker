@@ -21,18 +21,17 @@
         </div>
         <div class="btns">
             <form action="" method="GET">
-            <select name="dateSort" id="">
-                  <option value="">date (asc)</option>
+                <select name="dateSort" id="">
+                    <option value="">date (asc)</option>
                     <option value="">date (desc)</option>
-            </select>
-            <select name="" id="">
+                </select>
+                <select name="" id="">
 
-            </select>
-            <input type="submit" name="" id="" value="filter">
-            <input type="submit" name="" id="" value="clear">
-        </form>
-            {{-- <a href="{{ route('tasks.create') }}">create new task</a> --}}
-            <x-button href='tasks.create'>create new task</x-button>
+                </select>
+                <input type="submit" name="" id="" value="filter">
+                <input type="submit" name="" id="" value="clear">
+            </form>
+            <x-create-button href="tasks.create">create a new task</x-create-button>
         </div>
         <div class="tasksTable">
             <table>
@@ -43,45 +42,28 @@
                     <th>Priority</th>
                     <th>Status</th>
                     <th>Actions</th>
-
                 </thead>
                 <tbody>
                     @foreach ($tasks as $task)
                         <tr>
-                            {{-- <td><a href="{{ route('tasks.show', $task) }}">{{ $task->title }}</a>  --}}
-                          <td><x-button href='tasks.show' :object='$task'>{{ $task->title }}</x-button>
-
-                            </td>
-                            <td>
-                                {{-- <a href="{{ route('projects.show', $task->project_id) }}">
-                                    {{ App\Models\Project::find($task->project_id)->title }}</a> --}}
-                                    <x-button href='projects.show' :object='$task->project_id'> {{ App\Models\Project::find($task->project_id)->title }}</x-button>
-                                </td>
+                            <td><a href="{{ route('tasks.show', $task) }}">{{ $task->title }}</a></td>
+                            <td><a href="{{ route('projects.show', $task->project_id) }}">
+                                    {{ App\Models\Project::find($task->project_id)->title }}</a></td>
                             <td>{{ $task->deadline }}</td>
-
                             <td>{{ $task->priority }}</td>
                             <td>{{ $task->is_completed }}</td>
                             <td class="lastTd">
-                                {{-- <a href="{{ route('tasks.edit', $task) }}"><input type="button" value="edit"></a> --}}
-                                            <x-button href='tasks.edit' :object='$task'>edit</x-button>
-
-                                {{-- <form action="{{ route('tasks.destroy', $task) }}" method="POST">
-                                    @csrf
-                                    @method('delete')
-                                    <input type="submit" name="" id="" value="delete">
-                                </form> --}}
+                                <x-edit-button href='tasks.edit' :id='$task'>
+                                    <p>edit</p>
+                                </x-edit-button>
                                 <x-delete-button route="tasks.destroy" :object='$task' />
                             </td>
-
                         </tr>
                     @endforeach
-                 
-
                 </tbody>
-
             </table>
         </div>
-           {{ $tasks->links() }}
+        {{ $tasks->links() }}
     </div>
 </body>
 

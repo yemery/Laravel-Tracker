@@ -14,12 +14,9 @@
     <x-sidebar />
     <div class="content">
         <div class="row">
-                         <x-go-back/>
-
+            <x-go-back />
         </div>
-        <form action="
-        {{-- {{ route('settings.update', $user->id) }} --}}
-        " method="post">
+        <form action="" method="post">
             @csrf
             @method('PATCH')
             <div class="inputs">

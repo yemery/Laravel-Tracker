@@ -1,15 +1,12 @@
 * {
     text-transform: capitalize;
 }
+
 .content {
     width: calc(100% - 327px);
     position: absolute;
     right: 0;
     top: 10%;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around; */
     margin: 30px auto;
 }
 
@@ -39,14 +36,22 @@ th {
     font-family: 'Rubik';
     font-size: 16px;
 }
-.tasksTable, .projectsTable {
+
+.tasksTable,
+.projectsTable {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 30px;
-        width: 93%;
+    width: 93%;
 
 }
-.progBar{
+
+.progBar {
     display: flex;
+}
+
+.progContainer {
+    display: flex;
+    justify-content: space-around;
 }

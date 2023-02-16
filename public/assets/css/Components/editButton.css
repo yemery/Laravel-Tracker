@@ -1,0 +1,13 @@
+#editBtn {
+    cursor: pointer;
+    color: white;
+    font-family: 'Rubik';
+    border-radius: 10px;
+    border: none;
+    text-transform: capitalize;
+    background-color: #4a72ff;
+}
+
+#editBtn>p {
+    margin-top: 6%;
+}

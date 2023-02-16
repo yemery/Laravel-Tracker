@@ -1,7 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-
-
-
 .content {
     width: calc(100% - 327px);
     position: absolute;
@@ -14,36 +10,26 @@
     margin: 30px auto;
 }
 
-table {
-    /* width: 100%; */
-}
-/* td:nth-child(0){
-    width: 150px;
-    height: 60px;
-} */
 * {
     text-transform: capitalize;
-    font-family: 'Rubik';
 }
 
 .divs {
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     align-items: center;
-    /* margin: 67px 161px; */
     justify-content: center;
-       row-gap: 49px;
+    row-gap: 49px;
     margin-top: 53px;
     font-size: 20px;
 }
+
 .divs div {
     width: 677px;
     display: flex;
     justify-content: space-between;
 }
-.divs div span {
-}
+
 .divs div span:first-child {
     font-size: 17px;
     font-weight: 600;
@@ -55,27 +41,13 @@ table {
     top: 10%;
     font-size: 16px;
 }
+
 .lastTd {
-       width: 200px;
+    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     column-gap: 61px;
     margin-top: 35px;
-    /* margin-bottom: 28px; */
     margin-right: -429px;
-}
-
-.lastTd input {
-    width: 95px;
-    height: 32px;
-    cursor: pointer;
-}
-
-.lastTd input[value="edit"] {
-    background-color: #4a72ff;
-    /* margin-right: 30px; */
-}
-.lastTd input[value="delete"] {
-    background-color: #f36161;
 }

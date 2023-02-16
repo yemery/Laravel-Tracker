@@ -1,0 +1,13 @@
+.progBar {
+    width: 80%;
+}
+
+.fill {
+    background-color: #4a72ff;
+    height: 20px;
+}
+
+.empty {
+    background-color: #ddd;
+    height: 20px;
+}

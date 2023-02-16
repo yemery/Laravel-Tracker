@@ -27,8 +27,8 @@
                     <tbody>
                         @foreach ($tasks as $task)
                             <tr>
-                                <td><x-button href='tasks.show' :object='$task'>{{ $task->title }}</x-button></td>
-                                <td><x-button href='projects.show' :object='$task->project_id'> {{ App\Models\Project::find($task->project_id)->title }}</x-button></td>
+                                <td>{{ $task->title }}</td>
+                                <td>{{ $task->deadline }}</td>
                                 <td>{{ \Carbon\Carbon::parse($task->deadline)->diffInDays(\Carbon\Carbon::parse($task->created_at)) }}
                                     days</td>
                             </tr>
@@ -50,10 +50,10 @@
                     <tbody>
                         @foreach ($progressions as $progression)
                             <tr>
-                                <td> <x-button href='projects.show' :object='$progression->id'> {{ $progression->title }}</x-button></td>
-                                <td>
-                                    <x-progress-bar :prog='$progression->prog'/>
-                                    {{intval($progression->prog)}}%
+                                <td>{{ $progression->title }}</td>
+                                <td class="progContainer">
+                                    <x-progress-bar :prog='$progression->prog' />
+                                    {{ intval($progression->prog) }} %
                                 </td>
                             </tr>
                         @endforeach

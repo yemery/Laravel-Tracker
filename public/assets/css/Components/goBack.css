@@ -4,4 +4,7 @@
     top: 10%;
     font-size: 16px;
     text-transform: capitalize;
+    filter:
+        invert(34%) sepia(60%) saturate(2648%) hue-rotate(219deg) brightness(106%) contrast(101%);
+    font-weight: 700;
 }

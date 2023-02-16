@@ -47,9 +47,11 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        // $request=$request->all();
         Project::create([
             'title' => $request->title,
             'created_at' => Carbon::now(),
+            // 'user_id'=>$request->status,
         ]);
         return redirect()->route('projects.index');
     }
@@ -114,6 +116,25 @@ class ProjectController extends Controller
     }
     public function progression()
     {
+        // $pProgs=DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
+        //     ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id")
+        //     ->orderBy('prog','desc')->get();
+
+        // cus we need also the information of the project anzidou join m3a project table 
+        // $progressionPerProject = DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
+        //     ->join("projects", "A.project_id", "=", "projects.id")
+        //     ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id, projects.*")
+        //     ->orderBy('id')->get();
+
+        // return multiple views with same param cus ana ma7tajaha f dashborad o nta f project 
+        // $views = [
+
+        //    view('Dashboard.index',['pProgs'=>$projects_with_prog] ),
+        //     // view('users.members', compact('data')),
+
+        // ];
+        // return $progressionPerProject;
+
         $project_ids = [];
         $idsQuery = DB::table('projects')->select('id')->get();
 

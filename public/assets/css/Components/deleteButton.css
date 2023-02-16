@@ -1,5 +1,4 @@
-input[value='delete']{
-
+#deleteBtn {
     background-color: #FF0606;
     width: 62px;
     height: 23px;
@@ -8,4 +7,6 @@ input[value='delete']{
     font-family: 'Rubik';
     border-radius: 6px;
     border: none;
+    text-transform: capitalize;
+    font-size: 13px;
 }

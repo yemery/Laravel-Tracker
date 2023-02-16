@@ -33,9 +33,7 @@
             </div>
         </div>
         <div class="buttons">
-                                                        <x-button href='settings.edit' :object='$user'>edit</x-button>
-
-            {{-- <a href="{{route('settings.edit', $user)}}" class="modify-btn">Modify</a> --}}
+            <a href="{{route('settings.edit', $user)}}" class="modify-btn">Modify</a>
             <button class="logout">Log Out</button>
         </div>
     </div>

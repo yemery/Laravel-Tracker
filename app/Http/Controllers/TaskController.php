@@ -35,8 +35,13 @@ class TaskController extends Controller
             'tasks'=>Task::
             join('projects', 'tasks.project_id', '=', 'projects.id')
             ->select('tasks.*', 'projects.title as project_title')
+            ->when(request('date') == 'asc',function ($q) use ($request){
+                    return $q->orderBy('deadline','asc');
+            } )->when(request('date') == 'desc',function ($q) use ($request){
+                    return $q->orderBy('deadline','desc');
+            } )
             ->orderBy('deadline','desc')
-            ->simplePaginate(7),
+            ->simplePaginate(9),
         ]);
    
   

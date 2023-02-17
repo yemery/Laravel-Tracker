@@ -1,12 +1,13 @@
 * {
     text-transform: capitalize;
+    font-family: 'rubik'
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 .content {
     width: calc(100% - 327px);
     position: absolute;
     right: 0;
-    top: 10%;
+    top: 2%;
     margin: 30px auto;
 }
 
@@ -30,8 +31,8 @@ tr:nth-child(even) {
 }
 
 th {
-    background-color: #4a72ff;
-    color: white;
+    background-color: #E8EDFF;
+    color: #4A72FF;
     font-weight: bold;
     font-family: 'Rubik';
     font-size: 16px;
@@ -54,4 +55,33 @@ th {
 .progContainer {
     display: flex;
     justify-content: space-around;
+}
+nav{
+    align-self: end;
+    margin-top: 22px;
+    font-size: 12px;
+}
+.completedProject , .lateTasks , .deadlines{
+  display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    width: 85%;
+    /* column-gap: 19px; */
+    gap: 17px;
+
+}
+.tables{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.header{
+    margin: 23px;
+    font-size: 23px;
+
+}
+.completedProject h4 , .lateTasks h4 , .deadlines h4{
+        font-size: 20px;
+    
 }

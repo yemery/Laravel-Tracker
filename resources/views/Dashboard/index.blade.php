@@ -13,15 +13,15 @@
 <body>
     <x-sidebar />
     <div class="content">
-        <h3>Hello , User Name</h3>
-        <i>welcome back !</i>
+      <div class="header">  <h3>Hello , User Name</h3>
+        <i>welcome back !</i></div>
         <div class="tables">
                     <div class="deadlines">
             <h4>upcoming deadlines</h4>
             @if (count($tasks) == 0)
                 <h3>all your tasks are completed</h3>
             @else
-                  <div class="tasksTable">
+                  {{-- <div class="tasksTable"> --}}
                 <table>
                     <thead>
                         <th>task title</th>
@@ -37,17 +37,18 @@
                                     days</td>
                             </tr>
                         @endforeach
+                        {{-- {{ $tasks->links() }} --}}
                     </tbody>
                 </table>
+     
 
-
-            </div>
+            {{-- </div> --}}
             @endif
-          
+     
         </div>
         <div class="completedProject">
             <h4>Almost Completed Projects</h4>
-            <div class="projectsTable">
+            {{-- <div class="projectsTable"> --}}
                 <table>
                     <thead>
                         <th>project title</th>
@@ -62,15 +63,17 @@
                                     {{ intval($progression->prog) }} %
                                 </td>
                             </tr>
-                        @endforeach
+                        @endforeach 
+                          {{-- {{ $progressions->links() }} --}}
                     </tbody>
 
                 </table>
-            </div>
+               
+            {{-- </div> --}}
              </div>
               <div class="lateTasks">
             <h4>undone tasks </h4>
-            <div class="projectsTable">
+            {{-- <div class="projectsTable"> --}}
                 <table>
                     <thead>
                         <th>task title</th>
@@ -85,11 +88,13 @@
                                 <td>{{$task->deadline}}</td>
                                 <td>{{$task->lateBy}} days</td>
                             </tr>
-                        @endforeach
+                        @endforeach  
+                        {{-- {{ $undoneTasks->links() }} --}}
                     </tbody>
 
                 </table>
-            </div>
+              
+            {{-- </div> --}}
              </div>
         </div>
        

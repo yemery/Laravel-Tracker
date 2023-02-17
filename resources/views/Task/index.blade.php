@@ -23,16 +23,19 @@
           <div class="forms" style="display: flex;">
               <form  method="GET">
                 {{-- @csrf --}}
-                <select name="date" id="">
-                    <option value="asc" @selected(old('date', 'asc') == 'asc')>date (asc)</option>
-                    <option value="desc" @selected(old('date', 'desc') == 'desc')>date (desc)</option>
+                <select name="date" id="" value='{{Request::get('date')}}'>
+                    <option value="" disabled selected></option>
+                    <option value="asc" >date (asc)</option>
+                    <option value="desc" >date (desc)</option>
                 </select>
                 <select name="" id="">
 
                 </select>
                 <input type="submit" name="" id="" value="filter">
-                
+               
             </form>
+             <a href="{{route('tasks.index')}}">clear</a>
+          
         
           </div>
             <x-create-button href="tasks.create">create a new task</x-create-button>

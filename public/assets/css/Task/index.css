@@ -36,8 +36,11 @@ tr:nth-child(even) {
 }
 
 th {
-    background-color: #4a72ff;
-    color: white;
+    font-family: 'Rubik';
+    font-weight: 600;
+    color: #4A72FF;
+    background-color: #E8EDFF;
+    padding: .5% 2%;
     font-weight: bold;
     font-family: 'Rubik';
     font-size: 16px;

@@ -36,6 +36,7 @@ th {
     font-weight: bold;
     font-family: 'Rubik';
     font-size: 16px;
+    padding: .5% 2%;
 }
 
 .tasksTable,

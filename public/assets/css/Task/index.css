@@ -70,14 +70,7 @@ body {
 
 }
 
-.btns {
-    display: flex;
-    /* flex-direction: row-reverse; */
-    /* justify-content: space-between; */
-    width: 93%;
-    margin-top: 93px;
-    padding: 20px auto;
-}
+
 
 .lastTd {
     width: 150px;
@@ -97,29 +90,10 @@ body {
     justify-content: center;
 }
 
-nav {
+/* nav {
     align-self: self-end;
     margin-right: 44px;
     margin-top: 19px;
-}
+} */
 
 /* Component Styles */
-.searchBar {
-    width: 410px;
-    height: 40px;
-    border: 2px solid #4A72FF;
-    border-radius: 15px;
-    font-size: 18px;
-    text-indent: 50px;
-}
-
-input[type=submit] {
-    background: #4A72FF;
-    border-radius: 10px;
-    color: white;
-    border: none;
-    /* width: 130px;
-height: 35px; */
-padding: 2% 3%;
-font-size: 20px;
-}

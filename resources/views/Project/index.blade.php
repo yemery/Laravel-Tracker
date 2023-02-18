@@ -14,9 +14,9 @@
     <x-sidebar />
     <div class="content">
         <div class="title">Your Projects</div>
-        <div class="button">
+      
             <x-create-button id="creation-btn" href="projects.create">Create A New Project</x-create-button>
-        </div>
+      
         <div class="projects-listing">
             @foreach ($projects as $project)
                 {{ $prog = null }}
@@ -27,9 +27,9 @@
                 @endforeach
             @endforeach
         </div>
-        <div class="pagination">
-            {{ $projects->links() }}
-        </div>
+       
+        <x-pagination-btn :collection="$projects"/>
+
     </div>
 
 </body>

@@ -3,12 +3,17 @@
 .content {
     position: absolute;
     right: 0;
-    margin-left: 348px;
-    margin-top: 59px;
+    /* margin-left: 348px; */
+    /* margin-top: 59px; */
     display: flex;
+        top: 67px;
     flex-direction: column;
-    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; 
+    width: calc(100% - 327px);
 }
+
 
 .title {
     font-family: 'Rubik';
@@ -27,7 +32,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin-left: 5%;
+    /* margin-left: 5%; */
     row-gap: 25px;
 }
 

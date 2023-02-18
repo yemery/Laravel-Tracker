@@ -17,12 +17,12 @@
             <x-go-back />
             <div class="title">{{ $project->title }}</div>
         </div>
-        <div class="buttons-div">
-            <button>Filter</button>
-            <x-create-button href="tasks.create">Add A New Task</x-create-button>
-            <x-edit-button href='projects.edit' :id='$project->id'>Edit The Project</x-edit-button>
-        </div>
-        <table>
+             <x-filter-and-search/>
+
+       @if (count($tasks) == 0)
+           <h1>0 tasks for this project</h1>
+       @else
+            <table>
             <thead>
                 <th>Task Title</th>
                 <th>Priority</th>
@@ -47,6 +47,7 @@
                 @endforeach
             </tbody>
         </table>
+       @endif
         <div class="footer">
             {{ $tasks->links() }}
         </div>

@@ -29,8 +29,9 @@ class DashboardController extends Controller
                 ->orderBy('prog', 'desc')->limit(5)->get(),
             'undoneTasks'=>Task::select('title', 'deadline', DB::raw('DATEDIFF(deadline, NOW()) as lateBy'))->whereIn('is_completed', ['in progress','not started'])->where('deadline','<=',$today)->orderBy('deadline', 'desc')->limit(5)->get()
         ]);
-     
-;
+
+          
+
 
     }
 

@@ -19,26 +19,49 @@
         <div class="header">
             <h3>all your tasks</h3>
         </div>
+         <x-create-button href="tasks.create">create a new task</x-create-button>
         <div class="btns">
-          <div class="forms" style="display: flex;">
+           
+                <form method="POST">
+                    <input type="text" name="searchText" id="" class="searchBar">
+                    <input type="submit" name="" id="" value="search">
+                </form>
+          
+          
               <form  method="GET">
                 {{-- @csrf --}}
                 <select name="date" id="" value='{{Request::get('date')}}'>
-                    <option value="" disabled selected></option>
+                    <option value="" disabled selected>by date</option>
                     <option value="asc" >date (asc)</option>
                     <option value="desc" >date (desc)</option>
                 </select>
-                <select name="" id="">
-
+                
+                  <select name="date" id="" value='{{Request::get('date')}}'>
+                    <option value="" disabled selected>by priority</option>
+                    <option value="asc" >date (asc)</option>
+                    <option value="desc" >date (desc)</option>
                 </select>
+               
+                  <select name="date" id="" value='{{Request::get('date')}}'>
+                    <option value="" disabled selected>by Status</option>
+                    <option value="asc" >date (asc)</option>
+                    <option value="desc" >date (desc)</option>
+                </select>
+                
                 <input type="submit" name="" id="" value="filter">
                
             </form>
-             <a href="{{route('tasks.index')}}">clear</a>
+             <a href="{{route('tasks.index')}}" style="font-size: 15px;
+    background-color: red;
+    color: white;
+    width: 45px;
+    text-align: center;
+    height: 20px;
+    border-radius: 1px;">clear</a>
           
         
-          </div>
-            <x-create-button href="tasks.create">create a new task</x-create-button>
+     
+           
         </div>
         <div class="tasksTable">
             <table>

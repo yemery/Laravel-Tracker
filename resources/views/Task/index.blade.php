@@ -23,7 +23,7 @@
         <div class="btns">
            
                 <form method="POST">
-                    <input type="text" name="searchText" id="" class="searchBar">
+                    <input type="text" name="searchText" id="" placeholder="Search for A Task Title" class="searchBar">
                     <input type="submit" name="" id="" value="search">
                 </form>
           

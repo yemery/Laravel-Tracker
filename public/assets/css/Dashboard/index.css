@@ -2,7 +2,9 @@
     text-transform: capitalize;
     font-family: 'rubik'
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 .content {
     width: calc(100% - 327px);
     position: absolute;
@@ -57,13 +59,21 @@ th {
     display: flex;
     justify-content: space-around;
 }
-nav{
+
+.titleCell {
+    width: 60%;
+}
+
+nav {
     align-self: end;
     margin-top: 22px;
     font-size: 12px;
 }
-.completedProject , .lateTasks , .deadlines{
-  display: flex;
+
+.completedProject,
+.lateTasks,
+.deadlines {
+    display: flex;
     flex-direction: column;
     margin-bottom: 30px;
     width: 85%;
@@ -71,18 +81,23 @@ nav{
     gap: 17px;
 
 }
-.tables{
+
+.tables {
     display: flex;
     flex-direction: column;
     align-items: center;
 
 }
-.header{
+
+.header {
     margin: 23px;
     font-size: 23px;
 
 }
-.completedProject h4 , .lateTasks h4 , .deadlines h4{
-        font-size: 20px;
-    
+
+.completedProject h4,
+.lateTasks h4,
+.deadlines h4 {
+    font-size: 20px;
+
 }

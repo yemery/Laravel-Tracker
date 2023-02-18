@@ -57,7 +57,7 @@
                     <tbody>
                         @foreach ($progressions as $progression)
                             <tr>
-                                <td>{{ $progression->title }}</td>
+                                <td class="titleCell">{{ $progression->title }}</td>
                                 <td class="progContainer">
                                     <x-progress-bar :prog='$progression->prog' />
                                     {{ intval($progression->prog) }} %

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class FilterAndSearch extends Controller
@@ -14,6 +15,7 @@ class FilterAndSearch extends Controller
      */
     public function __invoke(Request $request)
     {
-        
+        $tasks=Task::get();
+        dd($tasks);
     }
 }

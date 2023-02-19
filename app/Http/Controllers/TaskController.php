@@ -31,20 +31,52 @@ class TaskController extends Controller
         //     ->latest('id')
         //     ->simplePaginate(7),
         // ]);
-          return view('Task.index',[
-            'tasks'=>Task::
-            join('projects', 'tasks.project_id', '=', 'projects.id')
-            ->select('tasks.*', 'projects.title as project_title')
-            ->when(request('date') == 'asc',function ($q) use ($request){
-                    return $q->orderBy('deadline','asc');
-            } )->when(request('date') == 'desc',function ($q) use ($request){
-                    return $q->orderBy('deadline','desc');
-            } )
-            ->orderBy('deadline','desc')
-            ->simplePaginate(9),
+
+        //   return view('Task.index',[
+        //     'tasks'=>Task::
+        //     join('projects', 'tasks.project_id', '=', 'projects.id')
+        //     ->select('tasks.*', 'projects.title as project_title')
+        //     ->when(request('date') == 'asc',function ($q) use ($request){
+        //             return $q->orderBy('deadline','asc');
+        //     } )->when(request('date') == 'desc',function ($q) use ($request){
+        //             return $q->orderBy('deadline','desc');
+        //     } )
+        //     ->orderBy('deadline','desc')
+        //     ->simplePaginate(9),
+        // ]);
+
+        // dd(gettype(Task::
+        //     join('projects', 'tasks.project_id', '=', 'projects.id')
+        //     ->select('tasks.*', 'projects.title as project_title')
+        //     ->when(request('date') == 'asc',function ($q) use ($request){
+        //             return $q->orderBy('deadline','asc');
+        //     } )->when(request('date') == 'desc',function ($q) use ($request){
+        //             return $q->orderBy('deadline','desc');
+        //     } )
+        //     ->orderBy('deadline','desc')));
+        // bool from count of request to exercute the other controller's funcs
+        $filterController=new FilterSearch;
+        $filter=$filterController->Filter($request);
+        //    return view('Task.index',[
+        //     'tasks'=>$returnedVal
+        // ]);
+
+        if ($request->has('search')) {
+            $search=$filterController->Search($request->search,$filter);
+
+        }else{
+            
+        }
+
+                // why using this long if statement 
+                // inline if condition cus we need to put that $tasks in the argument for the tasks vies
+             return view('Task.index',[
+            // 'tasks'=> collect($filter)->simplePaginate(9)
+                        // 'tasks'=> $filter->toQuery()->simplePaginate(9)
+                        // daaaaaaaaaaaaaamn thanks chat for the explation n thanks to doc for the toQuery 
+                        'tasks'=> $request->has('search') ? $filterController->Search($request->search,$filter) : $filter
         ]);
-   
-  
+        // dd(gettype($filter));
      } 
      
 

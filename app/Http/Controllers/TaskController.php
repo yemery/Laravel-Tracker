@@ -55,26 +55,36 @@ class TaskController extends Controller
         //     } )
         //     ->orderBy('deadline','desc')));
         // bool from count of request to exercute the other controller's funcs
-        $filterController=new FilterSearch;
-        $filter=$filterController->Filter($request);
+
+        // $filterController=new FilterSearch;
+        // $filter=$filterController->Filter($request);
+
+
         //    return view('Task.index',[
         //     'tasks'=>$returnedVal
         // ]);
 
-        if ($request->has('search')) {
-            $search=$filterController->Search($request->search,$filter);
+        // if ($request->has('search')) {
+        //     $search=$filterController->Search($request->search,$filter);
 
-        }else{
+        // }else{
             
-        }
+        // }
+        $filters = new Filter();
+        $data = $filters->Filter($request);
+
 
                 // why using this long if statement 
                 // inline if condition cus we need to put that $tasks in the argument for the tasks vies
              return view('Task.index',[
             // 'tasks'=> collect($filter)->simplePaginate(9)
+
                         // 'tasks'=> $filter->toQuery()->simplePaginate(9)
+
+                        'tasks' => $data,
+
                         // daaaaaaaaaaaaaamn thanks chat for the explation n thanks to doc for the toQuery 
-                        'tasks'=> $request->has('search') ? $filterController->Search($request->search,$filter) : $filter
+                        // 'tasks'=> $request->has('search') ? $filterController->Search($request->search,$filter) : $filter
         ]);
         // dd(gettype($filter));
      } 

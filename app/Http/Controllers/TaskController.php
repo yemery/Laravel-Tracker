@@ -7,6 +7,7 @@ use App\Models\Task;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 
@@ -19,13 +20,17 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-
+        // $requestsUrl=$request->all();
+// $url = $request->url();
+// $response = Http::get($url);
+// dd($request->fullUrl());
         $filters = new Filter();
         $data = $filters->Filter($request);
 
         return view('Task.index', [
 
             'tasks' => $data->simplePaginate(9),
+            
         ]);
     }
 

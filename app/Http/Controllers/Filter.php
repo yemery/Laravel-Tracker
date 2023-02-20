@@ -20,7 +20,7 @@ class Filter extends Controller
         }
 
         if ($request->date == 'asc') {
-            $tasks = $tasks->sortBy('deadline');
+            $tasks = $tasks->orderBy('deadline','asc');
             // $tasks = $tasks->orderBy('deadline', 'asc')->get();
         } else {
             // $tasks = Task::sortByDesc('deadline');
@@ -28,8 +28,9 @@ class Filter extends Controller
         }
 
         if ($request->has('search')) {
-            $tasks = $tasks->where('title', 'like', "%$request->search%");
+            $tasks = $tasks->where('tasks.title', 'like', "%$request->search%");
         }
-        return $tasks;
+        return $tasks->join('projects', 'tasks.project_id', '=', 'projects.id')
+            ->select('tasks.*', 'projects.title as project_title');
     }
 }

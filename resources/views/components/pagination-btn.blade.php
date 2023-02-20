@@ -9,7 +9,7 @@
 </head>
 <body>
     
-    {{ $collection->links() }}
+    {{ $collection->appends(request()->query())->links() }}
 
 </body>
 </html>

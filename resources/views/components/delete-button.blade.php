@@ -13,7 +13,9 @@
     <form action="{{ route($route, $object) }}" method="POST">
         @csrf
         @method('delete')
-        <input type="submit" name="" id="deleteBtn" value="delete">
+        <button id="deleteBtn" type="submit" style="border: none"><object data={{ asset('images/Vector.svg') }} width="20"
+            height="20"></button>
+        {{-- <input type="submit" name="" id="deleteBtn" value="delete"> --}}
     </form>
 </body>
 

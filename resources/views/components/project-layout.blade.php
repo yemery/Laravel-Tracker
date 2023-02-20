@@ -11,7 +11,8 @@
 <body>
     <div class="project-container">
         <p class="project-title">
-            {{ $title }}
+           
+            <x-show-btn href='projects.show' :object='$id'> {{ $title }}</x-show-btn>
         </p>
         <div class="project-progression">
             <div class="project-status">

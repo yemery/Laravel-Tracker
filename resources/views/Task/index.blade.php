@@ -34,15 +34,17 @@
                 <tbody>
                     @foreach ($tasks as $task)
                         <tr>
-                            <td><a href="{{ route('tasks.show',$task->id) }}">{{ $task->title }}</a></td>
-                            <td><a href="{{ route('projects.show', $task->project_id) }}">
-                                    {{$task->project_title}}</a></td>
+                            {{-- <td><a href="{{ route('tasks.show',$task->id) }}">{{ $task->title }}</a></td> --}}
+                            <td><x-show-btn href='tasks.show' :object='$task->id'>{{ $task->title }}</x-show-btn></td>
+                            {{-- <td><a href="{{ route('projects.show', $task->project_id) }}">
+                                    {{$task->project_title}}</a></td> --}}
+                            <td><x-show-btn href='projects.show' :object='$task->project_id'>{{$task->project_title}}</x-show-btn></td>
                             <td>{{ $task->deadline }}</td>
                             <td>{{ $task->priority }}</td>
                             <td>{{ $task->is_completed }}</td>
                             <td class="lastTd">
                                 <x-edit-button href='tasks.edit' :id='$task'>
-                                    <p>edit</p>
+                                    edit
                                 </x-edit-button>
                                 <x-delete-button route="tasks.destroy" :object='$task' />
                             </td>

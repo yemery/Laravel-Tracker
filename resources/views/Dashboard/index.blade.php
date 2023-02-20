@@ -31,7 +31,8 @@
                     <tbody>
                         @foreach ($tasks as $task)
                             <tr>
-                                <td>{{ $task->title }}</td>
+                                {{-- <td>{{ $task->title }}</td> --}}
+                                <td><x-show-btn href='tasks.show' :object='$task->id'>{{$task->title}}</x-show-btn></td>
                                 <td>{{ $task->deadline }}</td>
                                 <td>{{ $task->daysLeft }}
                                     days</td>
@@ -57,7 +58,7 @@
                     <tbody>
                         @foreach ($progressions as $progression)
                             <tr>
-                                <td class="titleCell">{{ $progression->title }}</td>
+                                <td class="titleCell"><x-show-btn href='projects.show' :object='$progression->project_id'>{{ $progression->title }} </x-show-btn></td>
                                 <td class="progContainer">
                                     <x-progress-bar :prog='$progression->prog' />
                                     {{ intval($progression->prog) }} %
@@ -83,7 +84,7 @@
                     <tbody>
                         @foreach ($undoneTasks as $task)
                             <tr>
-                                <td>{{ $task->title }}</td>
+                                <td><x-show-btn href='tasks.show' :object='$task->id'>{{ $task->title }}</x-show-btn></td>
                              
                                 <td>{{$task->deadline}}</td>
                                 <td>{{$task->lateBy}} days</td>

@@ -15,7 +15,8 @@
     <div class="content">
         <div class="row">
             <x-go-back />
-            <div class="title">{{ $project->title }}</div>
+            <div class="title">            <x-show-btn href='projects.show' :object='$project->id'> {{ $project->title }}</x-show-btn>
+</div>
         </div>
              <x-filter-and-search/>
 
@@ -33,7 +34,8 @@
             <tbody>
                 @foreach ($tasks as $task)
                     <tr>
-                        <td><a href="{{ route('tasks.show', $task->id) }}">{{ $task->title }}</a></td>
+                        <td>
+                            <x-show-btn href='tasks.show' :object='$task->id'>{{ $task->title }}</x-show-btn></a></td>
                         <td>{{ $task->priority }}</td>
                         <td>{{ $task->is_completed }}</td>
                         <td>{{ $task->deadline }}</td>

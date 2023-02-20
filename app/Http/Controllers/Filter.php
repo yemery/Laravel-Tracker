@@ -9,24 +9,26 @@ class Filter extends Controller
 {
     public function Filter(Request $request)
     {
-        $tasks = Task::all();
+        $tasks= new Task();
         if ($request->has('priority')) {
             $tasks = $tasks->where('priority', $request->priority);
-            $tasks->toQuery();
+            // $tasks->toQuery();
         }
         if ($request->has('status')) {
             $tasks = $tasks->where('is_completed', '=', $request->status);
-            $tasks->toQuery();
+            // $tasks->toQuery();
         }
 
         if ($request->date == 'asc') {
-            $tasks = collect($tasks)->sortBy('deadline');
+            $tasks = $tasks->sortBy('deadline');
+            // $tasks = $tasks->orderBy('deadline', 'asc')->get();
         } else {
-            $tasks = collect($tasks)->sortByDesc('deadline');
+            // $tasks = Task::sortByDesc('deadline');
+            $tasks = $tasks->orderBy('deadline', 'desc');
         }
 
         if ($request->has('search')) {
-            $tasks = Task::where('title', 'like', "%$request->search%")->get();
+            $tasks = $tasks->where('title', 'like', "%$request->search%");
         }
         return $tasks;
     }

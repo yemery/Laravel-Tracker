@@ -24,8 +24,6 @@ class ProjectController extends Controller
         return view('Project.index', [
             'projects' => Project::orderBy('id', 'desc')->simplePaginate(6),
             'progressions' => $this->progression()
-            // does not work as i wanted, it just combines values in seperate rows
-            // 'combined' => array_merge(Project::orderBy('id', 'desc')->get()->toArray(), $this->progression()->toArray())
         ]);
     }
 
@@ -47,11 +45,9 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        // $request=$request->all();
         Project::create([
             'title' => $request->title,
             'created_at' => Carbon::now(),
-            // 'user_id'=>$request->status,
         ]);
         return redirect()->route('projects.index');
     }

@@ -52,7 +52,7 @@
             </table>
         </div>
         {{-- {{ $tasks->links() }} --}}
-        {{-- <x-pagination-btn :collection="$tasks"/> --}}
+        <x-pagination-btn :collection="$tasks"/>
     </div>
 </body>
 

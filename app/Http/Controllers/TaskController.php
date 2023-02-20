@@ -19,76 +19,16 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        
-       
-     
-        // return view('Task.index',[
-        //     'tasks'=>Task::when(request('date') == 'asc',function ($q) use ($request){
-        //             return $q->orderBy('deadline','asc');
-        //     } )->when(request('date') == 'desc',function ($q) use ($request){
-        //             return $q->orderBy('deadline','desc');
-        //     } )
-        //     ->latest('id')
-        //     ->simplePaginate(7),
-        // ]);
 
-        //   return view('Task.index',[
-        //     'tasks'=>Task::
-        //     join('projects', 'tasks.project_id', '=', 'projects.id')
-        //     ->select('tasks.*', 'projects.title as project_title')
-        //     ->when(request('date') == 'asc',function ($q) use ($request){
-        //             return $q->orderBy('deadline','asc');
-        //     } )->when(request('date') == 'desc',function ($q) use ($request){
-        //             return $q->orderBy('deadline','desc');
-        //     } )
-        //     ->orderBy('deadline','desc')
-        //     ->simplePaginate(9),
-        // ]);
-
-        // dd(gettype(Task::
-        //     join('projects', 'tasks.project_id', '=', 'projects.id')
-        //     ->select('tasks.*', 'projects.title as project_title')
-        //     ->when(request('date') == 'asc',function ($q) use ($request){
-        //             return $q->orderBy('deadline','asc');
-        //     } )->when(request('date') == 'desc',function ($q) use ($request){
-        //             return $q->orderBy('deadline','desc');
-        //     } )
-        //     ->orderBy('deadline','desc')));
-        // bool from count of request to exercute the other controller's funcs
-
-        // $filterController=new FilterSearch;
-        // $filter=$filterController->Filter($request);
-
-
-        //    return view('Task.index',[
-        //     'tasks'=>$returnedVal
-        // ]);
-
-        // if ($request->has('search')) {
-        //     $search=$filterController->Search($request->search,$filter);
-
-        // }else{
-            
-        // }
         $filters = new Filter();
         $data = $filters->Filter($request);
 
+        return view('Task.index', [
 
-                // why using this long if statement 
-                // inline if condition cus we need to put that $tasks in the argument for the tasks vies
-             return view('Task.index',[
-            // 'tasks'=> collect($filter)->simplePaginate(9)
-
-                        // 'tasks'=> $filter->toQuery()->simplePaginate(9)
-
-                        'tasks' => $data,
-
-                        // daaaaaaaaaaaaaamn thanks chat for the explation n thanks to doc for the toQuery 
-                        // 'tasks'=> $request->has('search') ? $filterController->Search($request->search,$filter) : $filter
+            'tasks' => $data->simplePaginate(9),
         ]);
-        // dd(gettype($filter));
-     } 
-     
+    }
+
 
 
     /**
@@ -96,11 +36,11 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
+
     public function create()
     {
-        $projectNames=Project::get();
-        return view('Task.create',['pNames'=>$projectNames]);
+        $projectNames = Project::get();
+        return view('Task.create', ['pNames' => $projectNames]);
     }
 
     /**
@@ -116,8 +56,8 @@ class TaskController extends Controller
             'created_at' => Carbon::now(),
             'priority' => $request->priority,
             'deadline' => $request->deadline,
-             "updated_at"=>Carbon::now(),
-            'project_id'=>$request->project_id,
+            "updated_at" => Carbon::now(),
+            'project_id' => $request->project_id,
         ]);
         return to_route('tasks.index');
     }
@@ -130,25 +70,12 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        // dd(Task::
-        //     // find($id)
-        //     join('projects', 'tasks.project_id', '=', 'projects.id')
-        //     ->select('tasks.*', 'projects.title as project_title',DB::raw('DATEDIFF(tasks.deadline,tasks.created_at) as days_left'))
-        //     ->where('tasks.id','=',$id)
-        //     ->get());
-        // return a collection dunno whyyyyyyy , that's why i put first instead of get
-        // find method didn't work ...
         return view('Task.show', [
-            'task' => Task::
-            // find($id)
-            join('projects', 'tasks.project_id', '=', 'projects.id')
-            ->select('tasks.*', 'projects.title as project_title',DB::raw('DATEDIFF(tasks.deadline,tasks.created_at) as days_left'))
-            ->where('tasks.id','=',$id)
-
-            // ->get()
-            ->first()
+            'task' => Task::join('projects', 'tasks.project_id', '=', 'projects.id')
+                ->select('tasks.*', 'projects.title as project_title', DB::raw('DATEDIFF(tasks.deadline,tasks.created_at) as days_left'))
+                ->where('tasks.id', '=', $id)
+                ->first()
         ]);
-       
     }
 
     /**
@@ -159,7 +86,10 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        return view('Task.edit',['task'=>$task,'pNames'=>$projectNames=Project::get()]);
+        return view('Task.edit', [
+            'task' => $task,
+            'pNames' => Project::all()
+        ]);
     }
 
     /**
@@ -169,21 +99,20 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTaskRequest $request,$id)
+    public function update(UpdateTaskRequest $request, $id)
     {
-        // Task::find($task->id)->update(['title' => $request->title]);
-        Task::find($id)->update([
-            'title' => $request->title,
-            'priority'=> $request->priority,
-            'is_completed'=>$request->is_completed,
-            'deadline'=>$request->deadline,
-            'project_id'=>$request->project_id,
-            'updated_at'=>Carbon::now()
-        ]
+        Task::find($id)->update(
+            [
+                'title' => $request->title,
+                'priority' => $request->priority,
+                'is_completed' => $request->is_completed,
+                'deadline' => $request->deadline,
+                'project_id' => $request->project_id,
+                'updated_at' => Carbon::now()
+            ]
         );
 
         return to_route('tasks.index');
-        // dd($request);
     }
 
     /**

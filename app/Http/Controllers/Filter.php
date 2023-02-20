@@ -18,15 +18,16 @@ class Filter extends Controller
             $tasks = $tasks->where('is_completed', '=', $request->status);
             $tasks->toQuery();
         }
-        
+
         if ($request->date == 'asc') {
             $tasks = collect($tasks)->sortBy('deadline');
-            return $tasks;
         } else {
             $tasks = collect($tasks)->sortByDesc('deadline');
-            return $tasks;
         }
 
-        
+        if ($request->has('search')) {
+            $tasks = Task::where('title', 'like', "%$request->search%")->get();
+        }
+        return $tasks;
     }
 }

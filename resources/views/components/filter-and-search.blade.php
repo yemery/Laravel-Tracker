@@ -11,8 +11,8 @@
 <body>
       <div class="btns">
            
-                <form method="POST">
-                    <input type="text" name="searchText" id="" placeholder="Search for A Task Title" class="searchBar">
+                <form method="GET">
+                    <input type="text" name="search" id="" placeholder="Search for A Task Title" class="searchBar">
                     <input type="submit" name="" id="" value="search">
                 </form>
           

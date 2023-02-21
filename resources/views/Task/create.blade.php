@@ -31,7 +31,7 @@
                 </select>
 
                 <label for=""> deadline </label>
-                <input type="date" name="myDate" min="{{ date('Y-m-d') }}">
+                <input type="date" name="deadline" min="{{ date('Y-m-d') }}">
 
                 <label for="">Project title</label>
                 <select name="project_id" id="">

@@ -13,7 +13,7 @@
     <form action="{{ route($route, $object) }}" method="POST">
         @csrf
         @method('delete')
-        <button id="deleteBtn" type="submit" style="border: none ; background-color: none ; cursor: pointer;"><img src="{{ asset('images/Vector.svg') }}" style="width: 20px ; height: 20px;" alt=""></button>
+        <button id="deleteBtn" type="submit" style="border: none ;     background-color: transparent ; cursor: pointer;"><img src="{{ asset('images/Vector.svg') }}" style="width: 20px ; height: 20px;" alt=""></button>
         {{-- <input type="submit" name=""  value="delete"> --}}
         {{-- <object data={{ asset('images/Vector.svg') }} width="20"
             height="20"> --}}

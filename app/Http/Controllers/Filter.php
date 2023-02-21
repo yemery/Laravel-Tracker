@@ -32,7 +32,7 @@ class Filter extends Controller
         }
         return $tasks->join('projects', 'tasks.project_id', '=', 'projects.id')
             ->select('tasks.*', 'projects.title as project_title')
-           
+           ->orderBy('tasks.created_at','asc')
             // ->get()
           
             ;

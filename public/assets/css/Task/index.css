@@ -73,10 +73,10 @@ body {
 
 
 .lastTd {
-    width: 150px;
+    /* width: 150px; */
     display: flex;
-    justify-content: space-around;
-    margin-top: 5%;
+    justify-content: center;
+    /* margin-top: 5%; */
 }
 
 .lastTd>#editBtn {

@@ -29,7 +29,7 @@ class TaskController extends Controller
 // dd($data);
         return view('Task.index', [
 
-            'tasks' => $data->orderBy('tasks.id','asc')->simplePaginate(9),
+            'tasks' => $data->simplePaginate(9),
             
         ]);
     }
@@ -58,10 +58,10 @@ class TaskController extends Controller
     {
         Task::create([
             'title' => $request->title,
-            'created_at' => Carbon::now()->timestamp,
+            'created_at' => Carbon::now(),
             'priority' => $request->priority,
             'deadline' => $request->deadline,
-            "updated_at" => Carbon::now()->timestamp,
+            "updated_at" => Carbon::now(),
             'project_id' => $request->project_id,
         ]);
         return to_route('tasks.index');

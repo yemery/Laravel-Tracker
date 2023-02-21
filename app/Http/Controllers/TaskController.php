@@ -26,10 +26,10 @@ class TaskController extends Controller
 // dd($request->fullUrl());
         $filters = new Filter();
         $data = $filters->Filter($request);
-
+// dd($data);
         return view('Task.index', [
 
-            'tasks' => $data->simplePaginate(9),
+            'tasks' => $data->orderBy('tasks.id','asc')->simplePaginate(9),
             
         ]);
     }
@@ -58,10 +58,10 @@ class TaskController extends Controller
     {
         Task::create([
             'title' => $request->title,
-            'created_at' => Carbon::now(),
+            'created_at' => Carbon::now()->timestamp,
             'priority' => $request->priority,
             'deadline' => $request->deadline,
-            "updated_at" => Carbon::now(),
+            "updated_at" => Carbon::now()->timestamp,
             'project_id' => $request->project_id,
         ]);
         return to_route('tasks.index');
@@ -77,7 +77,7 @@ class TaskController extends Controller
     {
         return view('Task.show', [
             'task' => Task::join('projects', 'tasks.project_id', '=', 'projects.id')
-                ->select('tasks.*', 'projects.title as project_title', DB::raw('DATEDIFF(tasks.deadline,tasks.created_at) as days_left'))
+                ->select('tasks.*', 'projects.title as project_title', DB::raw('DATEDIFF(tasks.deadline,NOW()) as days_left'))
                 ->where('tasks.id', '=', $id)
                 ->first()
         ]);

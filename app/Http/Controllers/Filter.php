@@ -31,6 +31,10 @@ class Filter extends Controller
             $tasks = $tasks->where('tasks.title', 'like', "%$request->search%");
         }
         return $tasks->join('projects', 'tasks.project_id', '=', 'projects.id')
-            ->select('tasks.*', 'projects.title as project_title');
+            ->select('tasks.*', 'projects.title as project_title')
+           
+            // ->get()
+          
+            ;
     }
 }

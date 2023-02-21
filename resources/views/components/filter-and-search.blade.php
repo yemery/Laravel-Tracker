@@ -20,9 +20,9 @@
               <form  method="GET">
                 {{-- @csrf --}}
                 <select name="date" id="" value='{{Request::get('date')}}'>
-                    <option value="" disabled selected>by date</option>
-                    <option value="asc" >date (asc)</option>
-                    <option value="desc" >date (desc)</option>
+                    <option value="" disabled selected>by deadline</option>
+                    <option value="asc" >nearest deadline</option>
+                    <option value="desc" >furthest deadline</option>
                 </select>
                 
                   <select name="priority" id="" value='{{Request::get('priority')}}'>

@@ -22,24 +22,24 @@
                 @csrf
                 <label for="">Title</label>
                 <input type="text" name="title" id="">
-                <label for="">Priority
 
-                </label>
+                <label for="">Priority</label>
                 <select name="priority" id="">
                     <option value="high">high</option>
                     <option value="medium">medium</option>
                     <option value="low">low</option>
                 </select>
-                <label for=""> deadline </label>
-                <input type="date" name="deadline" id="">
-                <label for="">Project title
 
-                </label>
+                <label for=""> deadline </label>
+                <input type="date" name="myDate" min="{{ date('Y-m-d') }}">
+
+                <label for="">Project title</label>
                 <select name="project_id" id="">
                     @foreach ($pNames as $p)
                         <option value="{{ $p->id }}">{{ $p->title }}</option>
                     @endforeach
                 </select>
+
                 <input type="submit" name="" id="" value="add Task">
             </form>
         </div>

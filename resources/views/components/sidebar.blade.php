@@ -13,24 +13,28 @@
         <img src="{{ asset('images/project-tracker-logo.svg') }}" alt="project-tracker-logo">
         <ul>
             <li>
-                <img src="{{ request()->is('dashboard') ? '/images/dashboard-active.svg' : '/images/dashboard.svg' }}"
+                <img src="{{ Str::contains(Request::url(), 'dashboard') ? '/images/dashboard-active.svg' : '/images/dashboard.svg' }}"
                     alt="dashboard-icon">
-                <a href="{{ url('dashboard') }}" class="{{ request()->is('dashboard') ? 'active' : '' }}">Dashboard</a>
+                <a href="{{ url('dashboard') }}"
+                    class="{{ Str::contains(Request::url(), 'dashboard') ? 'active' : '' }}">Dashboard</a>
             </li>
             <li>
-                <img src="{{ request()->is('projects') ? '/images/projects-active.svg' : '/images/projects.svg' }}"
+                <img src="{{ Str::contains(Request::url(), 'projects') ? '/images/projects-active.svg' : '/images/projects.svg' }}"
                     alt="projects-icon">
-                <a href="{{ url('projects') }}" class="{{ request()->is('projects') ? 'active' : '' }}">Projects</a>
+                <a href="{{ url('projects') }}"
+                    class="{{ Str::contains(Request::url(), 'projects') ? 'active' : '' }}">Projects</a>
             </li>
             <li>
-                <img src="{{ request()->is('tasks') ? '/images/tasks-active.svg' : '/images/tasks.svg' }}"
+                <img src="{{ Str::contains(Request::url(), 'tasks') ? '/images/tasks-active.svg' : '/images/tasks.svg' }}"
                     alt="tasks-icon">
-                <a href="{{ url('tasks') }}" class="{{ request()->is('tasks') ? 'active' : '' }}">Tasks</a>
+                <a href="{{ url('tasks') }}"
+                    class="{{ Str::contains(Request::url(), 'tasks') ? 'active' : '' }}">Tasks</a>
             </li>
             <li>
-                <img src="{{ request()->is('settings') ? '/images/settings-active.svg' : '/images/settings.svg' }}"
+                <img src="{{ Str::contains(Request::url(), 'settings') ? '/images/settings-active.svg' : '/images/settings.svg' }}"
                     alt="settings-icon">
-                <a href="{{ url('settings') }}" class="{{ request()->is('settings') ? 'active' : '' }}">Settings</a>
+                <a href="{{ url('settings') }}"
+                    class="{{ Str::contains(Request::url(), 'settings') ? 'active' : '' }}">Settings</a>
             </li>
         </ul>
     </div>

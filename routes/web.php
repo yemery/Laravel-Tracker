@@ -32,11 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Our Routes
-    
-    // Route::resource('/projects', ProjectController::class);
-    // Route::resource('/tasks', TaskController::class);
-    // Route::resource('/dashboard', DashboardController::class);
-    // Route::resource('/settings', SettingsController::class);
+
+    Route::resource('/projects', ProjectController::class);
+    Route::resource('/tasks', TaskController::class);
+    Route::resource('/dashboard', DashboardController::class);
+    Route::resource('/settings', SettingsController::class);
 });
 
 require __DIR__ . '/auth.php';

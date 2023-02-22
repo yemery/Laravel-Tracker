@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware('auth')->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/projects', ProjectController::class);
     Route::resource('/tasks', TaskController::class);
-    Route::resource('/dashboard', DashboardController::class);
+    // Route::resource('/dashboard', DashboardController::class);
     Route::resource('/settings', SettingsController::class);
 });
 

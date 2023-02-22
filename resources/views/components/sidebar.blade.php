@@ -15,7 +15,7 @@
             <li>
                 <img src="{{ request()->is('dashboard') ? '/images/dashboard-active.svg' : '/images/dashboard.svg' }}"
                     alt="dashboard-icon">
-                <a href="{{ url('/') }}" class="{{ request()->is('dashboard') ? 'active' : '' }}">Dashboard</a>
+                <a href="{{ url('dashboard') }}" class="{{ request()->is('dashboard') ? 'active' : '' }}">Dashboard</a>
             </li>
             <li>
                 <img src="{{ request()->is('projects') ? '/images/projects-active.svg' : '/images/projects.svg' }}"

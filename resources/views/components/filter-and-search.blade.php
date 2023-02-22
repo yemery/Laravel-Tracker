@@ -11,7 +11,7 @@
 <body>
       <div class="btns">
            
-                <form method="GET">
+                <form method="GET" id="searchForm">
                     <input type="text" name="search" id="" placeholder="Search for A Task Title" class="searchBar">
                     <input type="submit" name="" id="" value="search">
                 </form>
@@ -42,13 +42,7 @@
                 <input type="submit" name="" id="" value="filter">
                
             </form>
-             <a href="{{route('tasks.index')}}" style="font-size: 15px;
-    background-color: red;
-    color: white;
-    width: 45px;
-    text-align: center;
-    height: 20px;
-    border-radius: 1px;">clear</a>
+             <a href="{{route('tasks.index')}}" id="clearBtn">clear</a>
           
         
      

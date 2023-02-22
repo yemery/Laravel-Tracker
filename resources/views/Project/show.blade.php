@@ -11,10 +11,11 @@
 </head>
 
 <body>
-    <x-sidebar />
+    <x-sidebar /> 
+    <x-go-back />
     <div class="content">
         <div class="row">
-            <x-go-back />
+           
             <div class="title">            <x-show-btn href='projects.show' :object='$project->id'> {{ $project->title }}</x-show-btn>
 </div>
         </div>

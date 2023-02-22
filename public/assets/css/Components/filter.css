@@ -1,15 +1,20 @@
 .searchBar {
     width: 489px;
-    height: 40px;
+    height: 30px;
     border: 2px solid #4A72FF;
     border-radius: 4px;
     font-size: 18px;
     /* text-indent: 50px; */
     padding-left: 10px;
     /* margin-left: 33px; */
-    margin-right: 11px;
+    /* margin-right: 11px;*/
 }
-input[type="submit"] {
+#searchForm{
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+}
+input[type="submit"] , #clearBtn {
     background: #4A72FF;
     /* border-radius: 10px; */
     color: white;
@@ -18,8 +23,9 @@ input[type="submit"] {
     font-size: 13px;
     width: 63px;
     border-radius: 4px;
+    height: 32px;
+    margin-left: 9px;
     
-
 }
 .btns {
     display: flex;
@@ -28,4 +34,19 @@ input[type="submit"] {
     width: 93%;
     /* margin-top: 93px; */
     padding: 20px auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+select{
+    width: 146px;
+    height: 30px;
+}
+#clearBtn{
+       background: red;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }

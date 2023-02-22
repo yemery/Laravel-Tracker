@@ -34,7 +34,12 @@
         </div>
         <div class="buttons">
             <a href="{{route('settings.edit', $user)}}" class="modify-btn">Modify</a>
-            <button class="logout">Log Out</button>
+            {{-- <a class="logout" href="{{route('logout')}}"
+            >Log Out</a> --}}
+            <form action="{{route('logout')}}" method="post">
+                @csrf
+            <input type="submit" name="" id="">
+            </form>
         </div>
     </div>
 </body>

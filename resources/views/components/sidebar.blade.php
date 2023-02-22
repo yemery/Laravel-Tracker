@@ -13,9 +13,9 @@
         <img src="{{ asset('images/project-tracker-logo.svg') }}" alt="project-tracker-logo">
         <ul>
             <li>
-                <img src="{{ request()->is('/') ? '/images/dashboard-active.svg' : '/images/dashboard.svg' }}"
+                <img src="{{ request()->is('dashboard') ? '/images/dashboard-active.svg' : '/images/dashboard.svg' }}"
                     alt="dashboard-icon">
-                <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">Dashboard</a>
+                <a href="{{ url('/') }}" class="{{ request()->is('dashboard') ? 'active' : '' }}">Dashboard</a>
             </li>
             <li>
                 <img src="{{ request()->is('projects') ? '/images/projects-active.svg' : '/images/projects.svg' }}"

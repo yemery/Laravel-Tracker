@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <a id="editBtn" href="{{ route($href, $id) }}" ><img src="{{ asset('images/Vector2.svg') }}" style="width: 20px ; height: 20px;" alt=""></a>
+    <a id="editBtn" href="{{ route($href, $id) }}" ><img src="{{ asset('images/edit-icon.svg') }}" style="width: 20px ; height: 20px;" alt=""></a>
     {{-- <button><object data={{ asset('images/Vector2.svg') }} width="20"
             height="20"></button> --}}
 </body>

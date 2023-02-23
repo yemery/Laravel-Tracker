@@ -11,53 +11,60 @@
 </head>
 
 <body>
-    <x-sidebar /> 
+    <x-sidebar />
     <x-go-back />
     <div class="content">
         <div class="row">
-           
-            <div class="title">            <x-show-btn href='projects.show' :object='$project->id'> {{ $project->title }}</x-show-btn>
-</div>
-        </div>
-             <x-filter-and-search/>
 
-       @if (count($tasks) == 0)
-           <h1>0 tasks for this project</h1>
-       @else
+            <div class="title">
+                <x-show-btn href='projects.show' :object='$project->id'> {{ $project->title }}</x-show-btn>
+            </div>
+        </div>
+        <x-filter-and-search />
+
+        @if (count($tasks) == 0)
+            <h1>0 tasks for this project</h1>
+        @else
             <table>
-            <thead>
-                <th>Task Title</th>
-                <th>Priority</th>
-                <th>Status</th>
-                <th>Deadline</th>
-                <th>Actions</th>
-            </thead>
-            <tbody>
-                @foreach ($tasks as $task)
-                    <tr>
-                        <td>
-                            <x-show-btn href='tasks.show' :object='$task->id'>{{ $task->title }}</x-show-btn></a></td>
-                        <td>{{ $task->priority }}</td>
-                        <td>{{ $task->is_completed }}</td>
-                        <td>{{ $task->deadline }}</td>
-                        <td class="lastTd">
-                            <x-edit-button href='projects.edit' :id='$project->id'>
-                                <p>edit</p>
-                            </x-edit-button>
-                            <x-delete-button route="tasks.destroy" :object='$task' />
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-       @endif
+                <thead>
+                    <th>Task Title</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Deadline</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                    @foreach ($tasks as $task)
+                        <tr>
+                            <td>
+                                <x-show-btn href='tasks.show' :object='$task->id'>{{ $task->title }}</x-show-btn></a>
+                            </td>
+                            <td>{{ $task->priority }}</td>
+                            <td>{{ $task->is_completed }}</td>
+                            <td>{{ $task->deadline }}</td>
+                            <td class="lastTd">
+                                <x-edit-button href='projects.edit' :id='$project->id'>
+                                    <p>edit</p>
+                                </x-edit-button>
+                                <x-delete-button route="tasks.destroy" :object='$task' />
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
         <div class="footer">
             {{ $tasks->links() }}
         </div>
         <form action="{{ route('projects.destroy', $project) }}" method="POST">
             @csrf
             @method('delete')
-            <input type="submit" name="" id="delete-btn" value="Delete The Project">
+            <img src="" alt="">
+            {{-- <input type="submit" name="" id="deleteBtn" value="Delete The Project"> --}}
+            <button id="deleteBtn" type="submit">
+                <img src="{{ asset('images/delete-icon.svg') }}" style="width: 20px ; height: 20px;" alt="">
+                Delete The Project
+            </button>
         </form>
     </div>
 </body>

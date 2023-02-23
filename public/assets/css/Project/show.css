@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
+* {
+    text-transform: capitalize;
+}
+
+#deleteBtn {
+    font-size: 20px;
+    font-family: 'Rubik';
+    color: #FF0606;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    border: none;
+    gap: 15px;
+    cursor: pointer;
+}
+
 table {
     border-collapse: collapse;
     width: 93%;
@@ -24,8 +40,9 @@ table {
     align-items: center;
     justify-content: space-around;
     margin: 30px auto;
-        gap: 32px;
+    gap: 32px;
 }
+
 .row {
     width: 100%;
     display: flex;
@@ -100,7 +117,7 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.lastTd input {
+/* .lastTd input {
     background-color: #FF0606;
     width: 62px;
     height: 23px;
@@ -109,23 +126,19 @@ tr:nth-child(even) {
     font-family: 'Rubik';
     border-radius: 6px;
     border: none;
-}
+} */
 
-.lastTd a input:first-of-type {
-    background-color: #4a72ff;
-}
-
-#delete-btn {
-    color: white;
+/* #delete-btn {
     font-size: 20px;
     font-family: 'Rubik';
     border: none;
-    border-radius: 10px;
-    background-color: #FF0606;
+    color: #FF0606;
     width: 220px;
     height: 35px;
     cursor: pointer;
-}
+
+
+} */
 
 
 .lastTd>#editBtn {

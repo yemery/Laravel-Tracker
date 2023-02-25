@@ -30,7 +30,7 @@ class StoreUserRequest extends FormRequest
             'first_name'=>'alpha',
             'last_name'=>'alpha',
             'email'=>'email|unique:users',
-            'password'=>'required|min:8|max:10' // removed this regex from the rules just for the test '||regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'
+            'password'=>'required' // removed this regex from the rules just for the test '||regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'
         ];
     }
     public function messages()

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Task;
 use App\Models\Project;
 use App\Models\Dashboard;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDashboardRequest;
 use App\Http\Requests\UpdateDashboardRequest;
-use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -19,8 +20,19 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        // $userAuthenticated = Auth::user();
+        $user= session()->get('user');
+        $userAuthenticated = $user->first_name;
+        // dd($user->id);
         
-        $today=Carbon::today()->format('Y-m-d');
+        // i use this Auth class to get the user information ! how it works ?? it autom get the information of the authenticated user i tested twine and it worked 
+
+        // dd($user->id);
+        // Now , the main prb is the capabilty of accessing this var from any controller to avoid repetation speacially declaring it 
+        //  gotta find a way to declare it ones 
+
+    
+         $today=Carbon::today()->format('Y-m-d');
     
         return view('Dashboard.index', [
             'tasks' => Task::where('deadline','>=',$today)->where('is_completed','!=','completed')->select('tasks.*', DB::raw('DATEDIFF(deadline,NOW()) as daysLeft'))->orderBy('deadline', 'desc')->limit(5)->get(),
@@ -28,7 +40,8 @@ class DashboardController extends Controller
                 ->join("projects", "A.project_id", "=", "projects.id")
                 ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id, projects.*")
                 ->orderBy('prog', 'desc')->limit(5)->get(),
-            'undoneTasks'=>Task::select('tasks.*', DB::raw('DATEDIFF(deadline, NOW()) as lateBy'))->whereIn('is_completed', ['in progress','not started'])->where('deadline','<=',$today)->orderBy('deadline', 'desc')->limit(5)->get()
+            'undoneTasks'=>Task::select('tasks.*', DB::raw('DATEDIFF(deadline, NOW()) as lateBy'))->whereIn('is_completed', ['in progress','not started'])->where('deadline','<=',$today)->orderBy('deadline', 'desc')->limit(5)->get(),
+            'userName'=>$userAuthenticated
         ]);
        
 

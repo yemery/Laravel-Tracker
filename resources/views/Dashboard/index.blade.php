@@ -13,7 +13,7 @@
 <body>
     <x-sidebar />
     <div class="content">
-      <div class="header">  <h3>Hello , User Name</h3>
+      <div class="header">  <h3>Hello , {{$userName}}</h3>
         <i>welcome back !</i></div>
         <div class="tables">
                     <div class="deadlines">

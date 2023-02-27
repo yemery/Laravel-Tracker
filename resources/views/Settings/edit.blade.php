@@ -16,7 +16,7 @@
         <div class="row">
             <x-go-back />
         </div>
-        <form action="" method="post">
+        <form action="{{route('settings.update', $user->id)}}" method="post">
             @csrf
             @method('PATCH')
             <div class="inputs">

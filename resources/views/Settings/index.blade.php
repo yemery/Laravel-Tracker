@@ -21,7 +21,6 @@
                     <p>First Name : {{ $user->first_name }}</p>
                     <p>Last Name : {{ $user->last_name }}</p>
                     <p>Email Address : {{ $user->email }}</p>
-                    <p>Password : {{ $password }}</p>
                 </div>
             </div>
             <div class="email-verification">
@@ -38,7 +37,7 @@
             >Log Out</a> --}}
             <form action="{{route('logout')}}" method="post">
                 @csrf
-            <input type="submit" name="" id="">
+            <input type="submit" name="" class="logout" value="Log out">
             </form>
         </div>
     </div>

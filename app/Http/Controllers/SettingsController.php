@@ -7,6 +7,19 @@ use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
+
+    // public function __construct(public $user)
+    // {
+    //     $this->user = session()->get('user');
+    // }
+
+    public $user;
+    public function getUser()
+    {
+        $this->user = session()->get('user');
+        return $this->user;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +28,7 @@ class SettingsController extends Controller
     public function index()
     {
         return view('settings.index', [
-            'user' => User::first(),
-            'password' => str_repeat("*", strlen(User::first()->password))
+            'user' => $this->getUser()
         ]);
     }
 
@@ -60,9 +72,8 @@ class SettingsController extends Controller
      */
     public function edit(User $user)
     {
-
         return view('settings.edit', [
-            'user' => User::first()
+            'user' => $this->getUser()
         ]);
     }
 
@@ -75,7 +86,7 @@ class SettingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
     }
 
     /**

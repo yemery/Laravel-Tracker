@@ -14,6 +14,14 @@ use function GuzzleHttp\Promise\task;
 
 class ProjectController extends Controller
 {
+
+    public $user;
+    public function getUserId()
+    {
+        $this->user = session()->get('user')->id;
+        return $this->user;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +30,10 @@ class ProjectController extends Controller
     public function index()
     {
         return view('Project.index', [
-            'projects' => Project::orderBy('id', 'desc')->simplePaginate(6),
+            'projects' => Project::orderBy('id', 'desc')
+                // ->join('users', 'user.id', 'projects.user_id')
+                ->where('user_id', $this->getUserId())
+                ->simplePaginate(6),
             'progressions' => $this->progression()
         ]);
     }
@@ -48,6 +59,7 @@ class ProjectController extends Controller
         Project::create([
             'title' => $request->title,
             'created_at' => Carbon::now(),
+            'user_id' => $this->getUserId()
         ]);
         return redirect()->route('projects.index');
     }
@@ -110,6 +122,7 @@ class ProjectController extends Controller
         $project->delete();
         return redirect(route('projects.index'));
     }
+
     public function progression()
     {
         $project_ids = [];

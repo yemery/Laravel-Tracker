@@ -20,34 +20,47 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // $userAuthenticated = Auth::user();
-        $user= session()->get('user');
-        $userAuthenticated = $user->first_name;
-        // dd($user->id);
-        
-        // i use this Auth class to get the user information ! how it works ?? it autom get the information of the authenticated user i tested twine and it worked 
-
-        // dd($user->id);
-        // Now , the main prb is the capabilty of accessing this var from any controller to avoid repetation speacially declaring it 
-        //  gotta find a way to declare it ones 
-
-    
-         $today=Carbon::today()->format('Y-m-d');
-    
-        return view('Dashboard.index', [
-            'tasks' => Task::where('deadline','>=',$today)->where('is_completed','!=','completed')->select('tasks.*', DB::raw('DATEDIFF(deadline,NOW()) as daysLeft'))->orderBy('deadline', 'desc')->limit(5)->get(),
-            'progressions' => DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
-                ->join("projects", "A.project_id", "=", "projects.id")
-                ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id, projects.*")
-                ->orderBy('prog', 'desc')->limit(5)->get(),
-            'undoneTasks'=>Task::select('tasks.*', DB::raw('DATEDIFF(deadline, NOW()) as lateBy'))->whereIn('is_completed', ['in progress','not started'])->where('deadline','<=',$today)->orderBy('deadline', 'desc')->limit(5)->get(),
-            'userName'=>$userAuthenticated
-        ]);
        
+        $UserInfos=new NeededInfos;
+        $UserProjects=$UserInfos->getUserProjects();
+        $today=Carbon::today()->format('Y-m-d');
+    
 
-          
+        dd($UserInfos->getUserTasks());
+        // return view('Dashboard.index', [
+        //     'tasks' => $UserProjects
+        //     ->join('tasks','projects.id','tasks.project_id')
+        //     ->where('tasks.deadline','>=',$today)
+        //     ->where('tasks.is_completed','!=','completed')
+        //     ->select('tasks.*',DB::raw('DATEDIFF(tasks.deadline,NOW()) as daysLeft'))
+        //     ->orderBy('tasks.deadline', 'desc')
+        //     ->limit(5)
+        //     ->get(),
+        //     'progressions' => DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
+        //         ->join("projects", "A.project_id", "=", "projects.id")
+        //         ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id, projects.*")
+        //         ->orderBy('prog', 'desc')->limit(5)->get(),
+        //     'undoneTasks'=> $UserProjects
+        //     ->join('tasks','projects.id','tasks.project_id')
+        //     ->whereIn('tasks.is_completed', ['in progress','not started'])
+        //     ->where('tasks.deadline','<=',$today)
+        //     ->select('tasks.*', DB::raw('DATEDIFF(tasks.deadline, NOW()) as lateBy'))
+        //     ->orderBy('tasks.deadline', 'desc')
+        //     ->limit(5)
+        //     ->get(),
+        //     'userName'=>$UserInfos->getUserInfo()->first_name
+        // ]);
+        // dd()
 
 
+    //    dd($Controller->getUserInfo());
+    // dd($UserProjects->join('tasks','projects.id','tasks.project_id')->whereIn('is_completed', ['in progress','not started'])->where('deadline','<=',$today)->select('tasks.*', DB::raw('DATEDIFF(deadline, NOW()) as lateBy'))->orderBy('deadline', 'desc')->limit(5)->get());
+    //    dd($projectsUser->join('tasks','projects.id','=','tasks.project_id')->get());
+
+               
+        //   dd($UserInfos->getUserInfo()->first_name);
+
+           
     }
 
 

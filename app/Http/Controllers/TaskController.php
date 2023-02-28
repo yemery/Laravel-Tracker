@@ -18,6 +18,14 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function getController()
+    {
+        
+        return new NeededInfos;
+    }
+
+
     public function index(Request $request)
     {
         // $requestsUrl=$request->all();
@@ -27,6 +35,7 @@ class TaskController extends Controller
         $filters = new Filter();
         $data = $filters->Filter($request);
 // dd($data);
+        
         return view('Task.index', [
 
             'tasks' => $data->simplePaginate(9),

@@ -13,22 +13,32 @@ class SettingsController extends Controller
     //     $this->user = session()->get('user');
     // }
 
-    public $user;
-    public function getUser()
-    {
-        $this->user = session()->get('user');
-        return $this->user;
-    }
+    // public $user;
+    // public function getUser()
+    // {
+    //     $this->user = session()->get('user');
+    //     return $this->user;
+    // }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+       public function getController()
+    {
+        
+        return new NeededInfos;
+    }
+
     public function index()
     {
+         $UserInfos=$this->getController()->getUserInfo();
+        //  dd($UserInfos);
+
         return view('settings.index', [
-            'user' => $this->getUser()
+            'user' => $UserInfos
         ]);
     }
 

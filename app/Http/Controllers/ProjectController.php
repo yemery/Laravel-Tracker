@@ -7,32 +7,43 @@ use App\Models\Task;
 use App\Models\Project;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\NeededInfos;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 
 use function GuzzleHttp\Promise\task;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
+    // use NeededInfos;
 
-    public $user;
-    public function getUserId()
-    {
-        $this->user = session()->get('user')->id;
-        return $this->user;
-    }
+    // public $user;
+    // public function getUserId()
+    // {
+    //     $this->user =  Auth::user()->id;
+    //     return $this->user;
+    // }
+    // public $UserInfos;
+    // $this->UserInfos=new NeededInfos ;
+    // protected static $myStaticVariable = new NeededInfos ;
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+     public function getController()
+    {
+        
+        return new NeededInfos;
+    }
     public function index()
     {
         return view('Project.index', [
             'projects' => Project::orderBy('id', 'desc')
                 // ->join('users', 'user.id', 'projects.user_id')
-                ->where('user_id', $this->getUserId())
+                ->where('user_id',$this->getController()->getUserInfo()->id)
                 ->simplePaginate(6),
             'progressions' => $this->progression()
         ]);
@@ -56,10 +67,12 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        // $UserInfos=new NeededInfos;
+
         Project::create([
             'title' => $request->title,
             'created_at' => Carbon::now(),
-            'user_id' => $this->getUserId()
+            'user_id' => $this->getController()->getUserInfo()->id
         ]);
         return redirect()->route('projects.index');
     }

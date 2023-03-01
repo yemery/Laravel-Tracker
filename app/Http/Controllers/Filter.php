@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class Filter extends Controller
 {
+     public function getController()
+    {
+        
+        return new NeededInfos;
+    }
     public function Filter(Request $request)
     {
-        $tasks= new Task();
+        $tasks= $this->getController()->getUserTasks();
         if ($request->has('priority')) {
             $tasks = $tasks->where('priority', $request->priority);
             // $tasks->toQuery();
@@ -30,11 +35,7 @@ class Filter extends Controller
         if ($request->has('search')) {
             $tasks = $tasks->where('tasks.title', 'like', "%$request->search%");
         }
-        return $tasks->join('projects', 'tasks.project_id', '=', 'projects.id')
-            ->select('tasks.*', 'projects.title as project_title')
-           ->orderBy('tasks.created_at','asc')
-            // ->get()
-          
-            ;
+        return $tasks
+            ->select('tasks.*', 'projects.title as project_title');
     }
 }

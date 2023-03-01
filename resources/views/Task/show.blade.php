@@ -59,18 +59,14 @@
                 <span>updated at</span>
                 <span>{{ $task->updated_at }}</span>
             </div>
+            <div >
+                <span>actions</span>
+                <span class="lastTd"> <x-edit-button href='tasks.edit' :id='$task->id'>edit</x-edit-button>
+            <x-delete-button route="tasks.destroy" :object='$task' /></span>
+            </div>
 
         </div>
-        <div class="lastTd">
-
-            <a href="{{ route('tasks.edit', $task) }}">
-                <input type="button" value="edit"></a>
-            <form action="{{ route('tasks.destroy', $task) }}" method="POST">
-                @csrf
-                @method('delete')
-                <input type="submit" name="" id="" value="delete">
-            </form>
-        </div>
+        
     </div>
 </body>
 

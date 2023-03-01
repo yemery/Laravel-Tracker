@@ -34,8 +34,8 @@ class TaskController extends Controller
 // dd($request->fullUrl());
         $filters = new Filter();
         $data = $filters->Filter($request);
-// dd($data);
-        
+    // dd($data);
+        // dd($data->get());
         return view('Task.index', [
 
             'tasks' => $data->simplePaginate(9),
@@ -53,7 +53,8 @@ class TaskController extends Controller
 
     public function create()
     {
-        $projectNames = Project::get();
+        $projectNames = $this->getController()->getUserProjects()->get();
+        // dd($projectNames);
         return view('Task.create', ['pNames' => $projectNames]);
     }
 

@@ -24,7 +24,7 @@ class NeededInfos extends Controller
      public function getUserTasks()
     {
         $projects=$this->getUserProjects();
-        $this->tasks=$projects->join('tasks','tasks.project_id','projects.id')->get();
+        $this->tasks=$projects->join('tasks','tasks.project_id','projects.id');
         return $this->tasks;
     }
     

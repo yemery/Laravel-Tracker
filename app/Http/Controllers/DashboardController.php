@@ -24,45 +24,46 @@ class DashboardController extends Controller
         $UserInfos=new NeededInfos;
         $UserProjects=$UserInfos->getUserProjects();
         $today=Carbon::today()->format('Y-m-d');
+        $UserTasks=$UserInfos->getUserTasks();
+
+      
+        return view('Dashboard.index', [
+            'tasks' => $UserTasks->where('tasks.deadline','>=',$today)
+            ->where('tasks.is_completed','!=','completed')
+            ->select('tasks.*',DB::raw('DATEDIFF(tasks.deadline,NOW()) as daysLeft'))
+            ->orderBy('tasks.deadline', 'desc')
+            ->limit(5)
+            ->get(),
+            'progressions' => DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
+                ->join("projects", "A.project_id", "=", "projects.id")
+                ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id, projects.*")
+                ->limit(5)->get(),
+            'undoneTasks'=>$UserTasks ->whereIn('tasks.is_completed', ['in progress','not started'])
+            ->where('tasks.deadline','<=',$today)
+            ->select('tasks.*', DB::raw('DATEDIFF(tasks.deadline, NOW()) as lateBy'))
+            ->orderBy('tasks.deadline', 'desc')
+            ->limit(5)
+            ->get(),
+            'userName'=>$UserInfos->getUserInfo()->first_name
+        ]);
+
+
     
-
-        dd($UserInfos->getUserTasks());
-        // return view('Dashboard.index', [
-        //     'tasks' => $UserProjects
-        //     ->join('tasks','projects.id','tasks.project_id')
-        //     ->where('tasks.deadline','>=',$today)
-        //     ->where('tasks.is_completed','!=','completed')
-        //     ->select('tasks.*',DB::raw('DATEDIFF(tasks.deadline,NOW()) as daysLeft'))
-        //     ->orderBy('tasks.deadline', 'desc')
-        //     ->limit(5)
-        //     ->get(),
-        //     'progressions' => DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
-        //         ->join("projects", "A.project_id", "=", "projects.id")
-        //         ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id, projects.*")
-        //         ->orderBy('prog', 'desc')->limit(5)->get(),
-        //     'undoneTasks'=> $UserProjects
-        //     ->join('tasks','projects.id','tasks.project_id')
-        //     ->whereIn('tasks.is_completed', ['in progress','not started'])
-        //     ->where('tasks.deadline','<=',$today)
-        //     ->select('tasks.*', DB::raw('DATEDIFF(tasks.deadline, NOW()) as lateBy'))
-        //     ->orderBy('tasks.deadline', 'desc')
-        //     ->limit(5)
-        //     ->get(),
-        //     'userName'=>$UserInfos->getUserInfo()->first_name
-        // ]);
-        // dd()
-
-
-    //    dd($Controller->getUserInfo());
-    // dd($UserProjects->join('tasks','projects.id','tasks.project_id')->whereIn('is_completed', ['in progress','not started'])->where('deadline','<=',$today)->select('tasks.*', DB::raw('DATEDIFF(deadline, NOW()) as lateBy'))->orderBy('deadline', 'desc')->limit(5)->get());
-    //    dd($projectsUser->join('tasks','projects.id','=','tasks.project_id')->get());
-
-               
-        //   dd($UserInfos->getUserInfo()->first_name);
-
            
     }
+    public function progresseBar($projects,$tasks)
+    {
+        
+        foreach ($projects as $project) {
+        $completed_tasks = $tasks::where('project_id', $project->id)->where('completed', true)->count();
+        $total_tasks = $project->tasks()->count();
+        $project->progress = $total_tasks > 0 ? ($completed_tasks / $total_tasks) * 100 : 0;
 
+
+    }
+    return $projects;
+    
+    }
 
     /**
      * Show the form for creating a new resource.

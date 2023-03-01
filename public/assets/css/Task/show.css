@@ -43,11 +43,8 @@
 }
 
 .lastTd {
-    width: 200px;
-    display: flex;
-    justify-content: center;
+        display: flex;
     align-items: center;
-    column-gap: 61px;
-    margin-top: 35px;
-    margin-right: -429px;
+    justify-content: space-between;
+    width: 65px;
 }

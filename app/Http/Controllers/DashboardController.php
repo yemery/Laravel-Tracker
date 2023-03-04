@@ -25,8 +25,11 @@ class DashboardController extends Controller
         $UserProjects=$UserInfos->getUserProjects();
         $today=Carbon::today()->format('Y-m-d');
         $UserTasks=$UserInfos->getUserTasks();
+        $UserProgProjects=$UserInfos->progression();
 
-      
+        $filteredProgProjects = collect($UserProgProjects)->filter(function ($value, $key) {
+            return $value > 75;
+        });
         return view('Dashboard.index', [
             'tasks' => $UserTasks->where('tasks.deadline','>=',$today)
             ->where('tasks.is_completed','!=','completed')
@@ -34,10 +37,8 @@ class DashboardController extends Controller
             ->orderBy('tasks.deadline', 'desc')
             ->limit(5)
             ->get(),
-            'progressions' => DB::table(DB::raw("(SELECT COUNT(id) as countA, project_id FROM tasks WHERE is_completed='completed' GROUP BY project_id) as A"))
-                ->join("projects", "A.project_id", "=", "projects.id")
-                ->selectRaw("(A.countA / (SELECT COUNT(id) FROM tasks B WHERE A.project_id = B.project_id)) * 100 as prog, A.project_id, projects.*")
-                ->limit(5)->get(),
+            'progressions' => $filteredProgProjects,
+            'projects'=>$UserProjects->get(),
             'undoneTasks'=>$UserTasks ->whereIn('tasks.is_completed', ['in progress','not started'])
             ->where('tasks.deadline','<=',$today)
             ->select('tasks.*', DB::raw('DATEDIFF(tasks.deadline, NOW()) as lateBy'))
@@ -51,19 +52,7 @@ class DashboardController extends Controller
     
            
     }
-    public function progresseBar($projects,$tasks)
-    {
-        
-        foreach ($projects as $project) {
-        $completed_tasks = $tasks::where('project_id', $project->id)->where('completed', true)->count();
-        $total_tasks = $project->tasks()->count();
-        $project->progress = $total_tasks > 0 ? ($completed_tasks / $total_tasks) * 100 : 0;
-
-
-    }
-    return $projects;
     
-    }
 
     /**
      * Show the form for creating a new resource.

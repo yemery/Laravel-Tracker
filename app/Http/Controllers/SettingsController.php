@@ -83,7 +83,7 @@ class SettingsController extends Controller
     public function edit(User $user)
     {
         return view('settings.edit', [
-            'user' => $this->getUser()
+            'user' => $this->getController()->getUserInfo()
         ]);
     }
 

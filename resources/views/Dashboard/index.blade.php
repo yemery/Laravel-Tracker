@@ -56,18 +56,26 @@
                         <th>progress</th>
                     </thead>
                     <tbody>
-                        @foreach ($progressions as $progression)
-                            <tr>
-                                <td class="titleCell"><x-show-btn href='projects.show' :object='$progression->project_id'>{{ $progression->title }} </x-show-btn></td>
+                        @foreach ($projects as $project)
+                         @foreach ($progressions as $id => $progression)
+                            @if ($id == $project->id)
+                        <tr>
+                         <td class="titleCell">
+                            <x-show-btn href='projects.show' :object='$project->id'>{{ $project->title }} </x-show-btn></td>
                                 <td class="progContainer">
-                                    <x-progress-bar :prog='$progression->prog' />
-                                    {{ intval($progression->prog) }} %
+                                    <x-progress-bar :prog='$progression' />
+                                    {{$progression}}%
+                                    
                                 </td>
                             </tr>
+                    @endif
+                @endforeach
+                            
                         @endforeach 
                           {{-- {{ $progressions->links() }} --}}
                     </tbody>
-
+<tr>
+                               
                 </table>
                
             {{-- </div> --}}

@@ -33,9 +33,9 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function getController()
+    public function getController()
     {
-        
+
         return new NeededInfos;
     }
     public function index()
@@ -43,7 +43,7 @@ class ProjectController extends Controller
         return view('Project.index', [
             'projects' => Project::orderBy('id', 'desc')
                 // ->join('users', 'user.id', 'projects.user_id')
-                ->where('user_id',$this->getController()->getUserInfo()->id)
+                ->where('user_id', $this->getController()->getUserInfo()->id)
                 ->simplePaginate(6),
             'progressions' => $this->progression()
         ]);
@@ -138,33 +138,6 @@ class ProjectController extends Controller
 
     public function progression()
     {
-        $project_ids = [];
-        $idsQuery = DB::table('projects')->select('id')->get();
-
-        foreach ($idsQuery as $value) {
-            array_push($project_ids, $value->id);
-        }
-
-        $results = [];
-
-        $tasks = null;
-        $progression = null;
-        $completed = null;
-
-        foreach ($project_ids as $id) {
-            $tasks = Task::where('project_id', $id)
-                ->count();
-            if ($tasks == 0) {
-                $progression = 0;
-            } else {
-                $completed = Task::where('project_id', $id)
-                    ->where('is_completed', 'completed')
-                    ->count();
-                $progression = intval($completed * 100 / $tasks);
-            }
-            $results[$id] = $progression;
-        }
-
-        return  $results;
+        return $this->getController()->progression();
     }
 }

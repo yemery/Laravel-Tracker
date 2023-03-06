@@ -30,7 +30,7 @@
 }
 
 
-.progress-bar {
+/* .progress-bar {
     height: 15px;
     background-color: #D9D9D9;
 }
@@ -39,7 +39,7 @@
     height: 100%;
     width: 50%;
     background-color: #4A72FF;
-}
+} */
 
 .project-progression {
     display: flex;
@@ -63,6 +63,7 @@
     font-family: 'Rubik';
     font-size: 20px;
 }
+
 .progBar{
     display: flex;
 }

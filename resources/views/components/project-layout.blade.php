@@ -11,7 +11,6 @@
 <body>
     <div class="project-container">
         <p class="project-title">
-           
             <x-show-btn href='projects.show' :object='$id'> {{ $title }}</x-show-btn>
         </p>
         <div class="project-progression">
@@ -21,13 +20,16 @@
             </div>
             <div class="progress-bar">
                 <div class="progBar">
-                     <x-progress-bar :prog='$progress' />
-                                   
+                    <x-progress-bar :prog='$progress' />
+
+                </div>
             </div>
+            <a class="project-link" href="{{ route('projects.show', $id) }}">
+                View Details
+            </a>
         </div>
-        <a class="project-link" href="{{ route('projects.show', $id) }}">
-            View Details</a>
     </div>
+
 </body>
 
 </html>

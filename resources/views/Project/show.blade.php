@@ -43,7 +43,7 @@
                             <td>{{ $task->is_completed }}</td>
                             <td>{{ $task->deadline }}</td>
                             <td class="lastTd">
-                                <x-edit-button href='projects.edit' :id='$project->id'>
+                                <x-edit-button href='tasks.edit' :id='$task->id'>
                                     <p>edit</p>
                                 </x-edit-button>
                                 <x-delete-button route="tasks.destroy" :object='$task' />
